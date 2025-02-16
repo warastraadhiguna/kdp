@@ -142,6 +142,20 @@ h6 {
   font-family: var(--body-font-family);
 }
 
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+
 /* Heading 1 */
 h1,
 .cs-text-style-h1 {
@@ -475,15 +489,15 @@ textarea {
   02. Colors & Variables
 ----------------------------------------------------------------*/
 :root {
-  --themecolor: #ff7b29;
-  --themecolor_secondary: #F16319;
-  --theme_black: #06082D;
+  --themecolor: #e0412c;
+  --themecolor_secondary: #E32E16;
+  --theme_black: #026A8B;
   --theme_white: #ffffff;
-  --themecolor_bg: #F16319;
-  --third_bg: #FF4A37;
+  --themecolor_bg: #E32E16;
+  --third_bg: #c22a16;
   --theme_bg_primary: #F8F8F8;
   --theme_bg_secondary: #101010;
-  --theme_bg_dark: #06082D;
+  --theme_bg_dark: #026A8B;
   --main-header-border-color: #ECECEC;
   --theme_dark_border: #373747;
   --theme_light_border: #ECECEC;
@@ -491,12 +505,12 @@ textarea {
   --theme_dark_heading_text: #101010;
   --theme_light_body_text: #373747;
   --theme_dark_body_text: #C1C1C1;
-  --theme-light-heading-1-font-color: #06082D;
-  --theme-light-heading-2-font-color: #06082D;
-  --theme-light-heading-3-font-color: #06082D;
-  --theme-light-heading-4-font-color: #06082D;
-  --theme-light-heading-5-font-color: #06082D;
-  --theme-light-heading-6-font-color: #06082D;
+  --theme-light-heading-1-font-color: #026A8B;
+  --theme-light-heading-2-font-color: #026A8B;
+  --theme-light-heading-3-font-color: #026A8B;
+  --theme-light-heading-4-font-color: #026A8B;
+  --theme-light-heading-5-font-color: #026A8B;
+  --theme-light-heading-6-font-color: #026A8B;
   --theme-light-paragraph-font-color: #373747;
   --theme-light-main-nav-font-color: #373747;
   --theme-light-span-font-color: #373747;
@@ -2430,6 +2444,22 @@ footer P {
   display: none !important;
 }
 
+.swiper-hint {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: #666;
+    animation: swipeHint 1.5s infinite alternate;
+}
+
+@keyframes swipeHint {
+    0% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(5px); }
+}
+
+
 @keyframes animate {
   0% {
     background-position: -500%;
@@ -3800,6 +3830,7 @@ button i {
 }
 .cs-cj-wrap .cj-right .timeline-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
   margin-left: 5vw;
+  /* Angling:  margin-left: 5vw;*/
 }
 .cs-cj-wrap .cj-right::before {
   content: "";
@@ -3948,7 +3979,8 @@ button i {
 .timeline-pagination {
   height: 10px;
   display: flex;
-  justify-content: space-around;
+  /* ANGLING: justify-content: space-around; */
+  justify-content: center;
   align-items: center;
   font-size: 22px;
   text-align: center;

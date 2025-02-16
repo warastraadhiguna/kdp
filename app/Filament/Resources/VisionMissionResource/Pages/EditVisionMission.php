@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Filament\Resources\CompanyResource\Pages;
+namespace App\Filament\Resources\VisionMissionResource\Pages;
 
+use Filament\Actions;
 use Filament\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Resources\Pages\EditRecord;
-use App\Filament\Resources\CompanyResource;
+use App\Filament\Resources\AboutUsResource;
+use App\Filament\Resources\VisionMissionResource;
 
-class EditCompany extends EditRecord
+class EditVisionMission extends EditRecord
 {
-    protected static string $resource = CompanyResource::class;
+    protected static string $resource = VisionMissionResource::class;
 
     public function getHeaderActions(): array
     {
@@ -28,12 +30,11 @@ class EditCompany extends EditRecord
                 ->label('Save')
                 ->color('primary')
                 ->action('save'),
-
         ];
     }
 
     public function getRecord(): Model
     {
-        return CompanyResource::getModel()::findOrFail(1); // Paksa hanya bisa edit ID 1
+        return AboutUsResource::getModel()::findOrFail(1); // Paksa hanya bisa edit ID 1
     }
 }

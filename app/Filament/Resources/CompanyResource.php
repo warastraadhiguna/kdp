@@ -2,8 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
 use App\Models\Company;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
@@ -14,7 +12,6 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use App\Filament\Resources\CompanyResource\Pages;
-use App\Filament\Resources\CompanyResource\RelationManagers;
 
 class CompanyResource extends Resource
 {
@@ -44,6 +41,9 @@ class CompanyResource extends Resource
                         TextInput::make('city')
                             ->label('Kota')
                             ->required(),
+                        Textarea::make('google_map_embed')
+                            ->label('Google Map Embed')
+                            ->required(),
                         TextInput::make('phone')
                             ->label('No Telepon')
                             ->required(),
@@ -54,13 +54,26 @@ class CompanyResource extends Resource
                             ->label('LinkedIn'),
                         TextInput::make('youtube')
                             ->label('Youtube'),
+                        FileUpload::make('icon')
+                            ->label('Icon')
+                            ->directory('images')
+                            ->image()
+                            ->maxSize(2048)
+                            ->getUploadedFileNameForStorageUsing(fn () => 'icon.png')
+                            ->required(),
                         FileUpload::make('image')
                             ->label('Logo')
                             ->directory('images')
                             ->image()
                             ->maxSize(2048)
-                            ->columnSpan(2) // Agar file upload lebar penuh
                             ->getUploadedFileNameForStorageUsing(fn () => 'logo.png')
+                            ->required(),
+                        FileUpload::make('breadcrumb_image')
+                            ->label('Gambar Background Halaman')
+                            ->directory('images')
+                            ->image()
+                            ->maxSize(2048)
+                            ->getUploadedFileNameForStorageUsing(fn () => 'breadcrumb.png')
                             ->required(),
                     ])
             ]);
@@ -71,7 +84,7 @@ class CompanyResource extends Resource
         return
             $table
                 ->columns([
-                    //
+
                 ]);
         // ->filters([
         //     //

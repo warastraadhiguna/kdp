@@ -1,5 +1,7 @@
 <?php
 
+use Intervention\Image\Image;
+
 return [
 
     /*
@@ -123,4 +125,8 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+
+        'aliases' => [
+            'Image' => Image::class,
+        ],
 ];
