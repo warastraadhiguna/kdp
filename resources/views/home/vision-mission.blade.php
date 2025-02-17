@@ -40,7 +40,7 @@
 
                     <a href="{{ url("/about") }}"
                         class="cs-primary-btn secondary-btn cs-color-white themecolor-bg cs-height-70 cs-width-220"
-                        style="margin-inline: auto;"><span>About Us</span></a>
+                        style="margin-inline: auto;"><span>Brief Histories</span></a>
                 </div>
             </div>
         </div>

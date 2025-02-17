@@ -2,46 +2,39 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Company extends Model
+class Blog extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'name',
-        'application_name',
-        'tagline',
-        'address',
-        'city',
-        'google_map_embed',
-        'phone',
-        'email',
-        'establishment_date',
-        'icon',
+        'title',
+        'slug',
+        'summary',
+        'content',
         'image',
-        'breadcrumb_image',
-        'linkedin',
-        'youtube',
-        'about_us',
-        'about_us_image',
-        'vision',
-        'mission',
-        'vision_mission_image',
-        'parallax_image'
+        'index',
     ];
-    protected $casts = [
-        'establishment_date' => 'date', // Pastikan ini ada
-    ];
+
     protected static function boot()
     {
         parent::boot();
 
+        static::creating(function ($model) {
+            if (empty($blog->slug)) {
+                $model->slug = Str::slug($model->title);
+            }
+        });
+
         static::updating(function ($model) {
-            $fields = ['image', 'breadcrumb_image', 'about_us_image', 'vision_mission_image', 'parallax_image'];
+            if ($model->isDirty("title")) {
+                $model->slug = Str::slug($model->title);
+            }
+
+            $fields = ['image'];
 
             foreach ($fields as $field) {
                 if ($model->isDirty($field)) {
@@ -63,10 +56,5 @@ class Company extends Model
                 }
             }
         });
-    }
-
-    public function getYearsSinceEstablishedAttribute()
-    {
-        return Carbon::parse($this->establishment_date)->age;
     }
 }

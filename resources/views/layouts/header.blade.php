@@ -27,64 +27,21 @@
               </li>
               <li>
                 <a href="{{ url('/gallery')}}" class="cs-text_b_line"><span>GALLERY</span></a>
-              </li>              
+              </li>    
+              <li>
+                <a href="{{ url('/project')}}" class="cs-text_b_line"><span>PROJECTS</span></a>
+              </li>                  
               <li class="menu-item-has-children">
-                <a href="service.html" class="cs-text_b_line"><span>SERVICES</span></a>
+                <a href="#" class="cs-text_b_line"><span>NEWS & INSIGHTS</span></a>
                 <ul>
-                  <li>
-                    <a href="service.html" class="cs-text_b_line"><span>SERVICES</span></a>
-                  </li>
-                  <li>
-                    <a href="service-details.html" class="cs-text_b_line"><span>SERVICES DETAILS</span></a>
-                  </li>
-                </ul>
-                <span class="cs_munu_dropdown_toggle"></span>
-              </li>
-              <li class="menu-item-has-children">
-                <a href="blog.html" class="cs-text_b_line"><span>NEWS & INSIGHTS</span></a>
-                <ul>
-                  <li>
-                    <a href="blog.html" class="cs-text_b_line"><span>NEWS</span></a>
-                  </li>
-                  <li>
-                    <a href="blog-standard.html" class="cs-text_b_line"><span>NEWS STANDARD</span></a>
-                  </li>
-                  <li>
-                    <a href="blog-details.html" class="cs-text_b_line"><span>NEWS SINGLE</span></a>
-                  </li>
-                </ul>
-                <span class="cs_munu_dropdown_toggle"></span>
-              </li>
-              <li class="menu-item-has-children">
-                <a href="#" class="cs-text_b_line"><span>PAGES</span></a>
-<ul>
-                  <li>
-                    <a href="projects.html" class="cs-text_b_line"><span>OUR PROJECTS</span></a>
-                  </li>
-                  <li>
-                    <a href="project-details.html" class="cs-text_b_line"><span>PROJECTS DETAILS</span></a>
-                  </li>
-                  <li>
-                    <a href="team.html" class="cs-text_b_line"><span>OUR TEAM</span></a>
-                  </li>
-                  <li>
-                    <a href="team-details.html" class="cs-text_b_line"><span>TEAM DETAILS</span></a>
-                  </li>
+                  @foreach($topBlogs as $blog)
+                    <li>
+                      <a href="{{ url("blog/" . $blog->slug )}}" class="cs-text_b_line"><span>{{ str($blog->title)->words(5) }}</span></a>
+                    </li>
+                  @endforeach
 
                   <li>
-                    <a href="pricing.html" class="cs-text_b_line"><span>PRICING</span></a>
-                  </li>
-                  <li>
-                    <a href="gallery.html" class="cs-text_b_line"><span>Gallery</span></a>
-                  </li>
-                  <li>
-                    <a href="faq.html" class="cs-text_b_line"><span>FAQ</span></a>
-                  </li>
-                  <li>
-                    <a href="404.html" class="cs-text_b_line"><span>Error</span></a>
-                  </li>
-                  <li>
-                    <a href="coming.html" class="cs-text_b_line"><span>Coming Soon</span></a>
+                    <a href="{{ url('blog') }}" class="cs-text_b_line"><span>All News</span></a>
                   </li>
                 </ul>
                 <span class="cs_munu_dropdown_toggle"></span>

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Models\Company;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
@@ -50,6 +51,9 @@ class CompanyResource extends Resource
                         TextInput::make('email')
                             ->label('Email')
                             ->required(),
+                        DatePicker::make('establishment_date')
+                            ->label('Establishment Date')
+                            ->required(),
                         TextInput::make('linkedin')
                             ->label('LinkedIn'),
                         TextInput::make('youtube')
@@ -74,6 +78,13 @@ class CompanyResource extends Resource
                             ->image()
                             ->maxSize(2048)
                             ->getUploadedFileNameForStorageUsing(fn () => 'breadcrumb.png')
+                            ->required(),
+                        FileUpload::make('parallax_image')
+                            ->label('Parallax Image (1920x751)')
+                            ->directory('images')
+                            ->image()
+                            ->maxSize(2048)
+                            ->getUploadedFileNameForStorageUsing(fn () => 'parallax.png')
                             ->required(),
                     ])
             ]);

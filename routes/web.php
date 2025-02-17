@@ -11,3 +11,7 @@ route::get('/gallery', [HomeController::class,'gallery']);
 
 route::get('/contact', [HomeController::class,'contact']);
 route::post('/contact', [HomeController::class,'message'])->name('contact.store');
+
+route::get('/blog', [HomeController::class,'blog']);
+route::get('/blog/{slug}', [HomeController::class,'detailBlog']);
+route::get('/project', [HomeController::class,'project']);

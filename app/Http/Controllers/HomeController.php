@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BriefHistory;
+use App\Models\Blog;
+use App\Models\Owner;
 use App\Models\Client;
+use App\Models\Slider;
 use App\Models\Gallery;
 use App\Models\Message;
-use App\Models\Owner;
-use App\Models\Slider;
+use App\Models\BriefHistory;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,6 +21,8 @@ class HomeController extends Controller
             'sliders' => Slider::orderBy('index')->get(),
             'clients' => Client::orderBy('index')->get(),
             'owners'  => Owner::orderBy('index')->get(),
+            'projects' => Project::with('owner')->orderBy('index')->where('index', ">", "0")->limit(4)->get(),
+            'blogs' => Blog::orderBy('index')->where('index', ">", "0")->limit(3)->get(),
         ];
         return view('home.index', $data);
     }
@@ -110,5 +114,34 @@ class HomeController extends Controller
         Message::create($sanitizedData);
 
         return redirect("/contact?status=success");
+    }
+
+    public function blog()
+    {
+        $data = [
+            'blogs' => Blog::orderBy('index')->where('index', ">", "0")->get(),
+        ];
+
+        return view('blog.index', $data);
+    }
+    public function detailBlog($slug)
+    {
+        $blog = Blog::where('slug', $slug)->where('index', ">", "0")->firstOrFail();
+        $data = [
+            "blog" => $blog ,
+            'blogs' => Blog::orderBy('index')->whereNot('id', $blog->id)->where('index', ">", "0")->limit(3)->get(),
+        ];
+
+        return view('blog.detail', $data);
+    }
+
+    public function project()
+    {
+        $data = [
+            'clients' => Client::orderBy('index')->get(),
+            'projects' => Project::with('owner')->orderBy('index')->where('index', ">", "0")->get(),
+        ];
+
+        return view('project.index', $data);
     }
 }

@@ -1,33 +1,6 @@
-@extends('layouts.index')
-@section('content')
-<!-- Start Common BreadCrumb -->
-<section>
-    <div class="cs-breadcrumb-wrap theme-dark" data-src="{{ asset('storage/' . $company->breadcrumb_image) }}">
-        <div class="container">
-            <div class="row cs_center">
-                <div class="cs-bread-page-title-area">
-                    <div class="cs-page-title">
-                        <h2 class="cs_white_color">Contact Us</h2>
-                    </div>
-                    <div class="breadcrumb">
-                        <ul>
-                            <li>
-                                <a href="{{ url('/')}}" class="cs-text_b_line"><span>HOME</span></a>
-                            </li>
-                            <li>/</li>
-                            <li>CONTACT US</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Common BreadCrumb -->
-
-
-< <!-- Start Contact Form & Map -->
     <section>
+        
+          <div class="cs-height-100"></div>
         <div class="cs-contact-map-and-form">
             <div class="container-fluid">
                 <div class="row cs_center" data-src="assets/img/pattern-bg-for-light.png">
@@ -38,7 +11,7 @@
                     </div>
 
                     <div class="col-xl-5 col-lg-6 col-md-12">
-                        @if ($status )
+                        @if (isset($status ) && $status)
                         <div class="cs-contact-form-wrap">
                             <div class="position-relative" data-aos="fade-up" data-aos-duration="500">
                                 <h5 class="cs-heading">The message successfully send</h5>
@@ -121,6 +94,3 @@
             </div>
         </div>
     </section>
-    <!-- End Contact Form & Map -->
-    @include('layouts.tagline');
-    @endsection

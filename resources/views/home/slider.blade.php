@@ -19,8 +19,8 @@
                  </div>
                   <p class="hero-subtitle">{{ $slider->note }}</p>
                   <div class="cs-couple-btn d-flex gap-3">
-                    <a href="contact.html" class="cs-primary-btn secondary-btn cs-color-white themecolor-bg cs-height-60 cs-width-180"><span>Start Project</span></a>
-                    <a href="contact.html" class="cs-primary-btn cs-color-white theme-black-bg cs-height-60 cs-width-180"><span>Contact Us</span></a>
+                    <a href="{{ url('/about') }}" class="cs-primary-btn secondary-btn cs-color-white themecolor-bg cs-height-60 cs-width-180"><span>About Us</span></a>
+                    <a href="{{ url('/contact') }}" class="cs-primary-btn cs-color-white theme-black-bg cs-height-60 cs-width-180"><span>Contact Us</span></a>
                   </div>
                 </div>
               </div>

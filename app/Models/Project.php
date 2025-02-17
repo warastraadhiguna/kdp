@@ -2,46 +2,29 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Company extends Model
+class Project extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'name',
-        'application_name',
-        'tagline',
-        'address',
-        'city',
-        'google_map_embed',
-        'phone',
-        'email',
-        'establishment_date',
-        'icon',
+        'contract_number',
+        'location',
+        'owner_id',
+        'schedule',
         'image',
-        'breadcrumb_image',
-        'linkedin',
-        'youtube',
-        'about_us',
-        'about_us_image',
-        'vision',
-        'mission',
-        'vision_mission_image',
-        'parallax_image'
+        'index',
     ];
-    protected $casts = [
-        'establishment_date' => 'date', // Pastikan ini ada
-    ];
+
     protected static function boot()
     {
         parent::boot();
 
         static::updating(function ($model) {
-            $fields = ['image', 'breadcrumb_image', 'about_us_image', 'vision_mission_image', 'parallax_image'];
+            $fields = ['image'];
 
             foreach ($fields as $field) {
                 if ($model->isDirty($field)) {
@@ -65,8 +48,8 @@ class Company extends Model
         });
     }
 
-    public function getYearsSinceEstablishedAttribute()
+    public function owner()
     {
-        return Carbon::parse($this->establishment_date)->age;
+        return $this->belongsTo(Owner::class);
     }
 }

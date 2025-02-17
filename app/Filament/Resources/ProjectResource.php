@@ -4,39 +4,49 @@ namespace App\Filament\Resources;
 
 use Filament\Tables;
 use App\Models\Owner;
+use App\Models\Project;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Intervention\Image\Encoders\JpegEncoder;
-use Intervention\Image\ImageManager;
-use Illuminate\Support\Facades\Storage;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\ImageManager;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
-use App\Filament\Resources\OwnerResource\Pages;
 use Intervention\Image\Drivers\Gd\Driver;
+use App\Filament\Resources\ProjectResource\Pages;
+use Intervention\Image\Drivers\Gd\Encoders\JpegEncoder;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
-class OwnerResource extends Resource
+class ProjectResource extends Resource
 {
-    protected static ?string $model = Owner::class;
+    protected static ?string $model = Project::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+
     protected static ?string $navigationGroup = 'Pengaturan Dasar';
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+           ->schema([
                 TextInput::make('name')->label('Nama')->required(),
+                TextInput::make('contract_number')->label('No Contract')->required(),
+                TextInput::make('location')->label('Location')->required(),
+                Select::make('owner_id')
+                    ->label('Owner')
+                    ->relationship('owner', 'name')
+                    ->options(fn () => Owner::where('index', '>', '0')->pluck('name', 'id'))
+                    ->searchable()
+                    ->required(),
+                TextInput::make('schedule')->label('Schedule')->required(),
                 TextInput::make('index')->label('Indeks')->minValue(0)->required(),
-                Textarea::make('note')
-                    ->label('Keterangan'),
                 FileUpload::make('image')
-                    ->label('Logo (430 x 401)')
-                    ->directory('images/owners') // Direktori penyimpanan di `storage/app/public`
+                    ->label('Logo (645 x 600)')
+                    ->directory('images/projects') // Direktori penyimpanan di `storage/app/public`
                     ->image() // Validasi gambar
                     ->required()
                     ->maxSize(2048)
@@ -48,11 +58,11 @@ class OwnerResource extends Resource
                         // **1. Simpan file langsung ke storage publik**
                         $fileName = 'owner_' . time() . '.' . $state->getClientOriginalExtension();
 
-                        $storedPath = $state->storePubliclyAs('images/owners', $fileName, 'public');
+                        $storedPath = $state->storePubliclyAs('images/projects', $fileName, 'public');
 
 
                         // **2. Dapatkan path asli file di storage publik**
-                        $publicPath = 'images/owners/' . $fileName;
+                        $publicPath = 'images/projects/' . $fileName;
                         $storagePath = Storage::disk('public')->path($publicPath);
 
                         // **3. Debugging: Pastikan file ada setelah disimpan**
@@ -79,7 +89,7 @@ class OwnerResource extends Resource
                         // **7. Resize menggunakan Intervention Image v3**
                         try {
                             $image = $manager->read($realPath)
-                                ->cover(430, 401) // Resize ke 430x401 px
+                                ->cover(645, 600)
                                 ->encode(new JpegEncoder(quality: 80)); // Encode sebagai JPG
 
                             // **8. Simpan ulang gambar yang sudah di-resize ke storage publik**
@@ -100,11 +110,12 @@ class OwnerResource extends Resource
         return $table
             ->recordUrl(fn ($record) => null)
             ->columns([
-                TextColumn::make('name')->label('Nama')->searchable(['name']),
-                TextColumn::make('note')->label('Keterangan')->wrap(),
+                TextColumn::make('name')->label('Nama')->searchable(['name','contract_number']),
+                TextColumn::make('location')->label('Lokasi'),
+                TextColumn::make('owner.name')->label('Owner'),
                 TextColumn::make('index')->label('Indeks'),
                 ImageColumn::make('image')
-                    ->label('Logo')
+                    ->label('Gambar')
                     ->size(50), // Ukuran gambar
             ])
             ->filters([
@@ -117,8 +128,7 @@ class OwnerResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ])
-            ->defaultSort("index");
+            ]);
     }
 
     public static function getRelations(): array
@@ -131,25 +141,25 @@ class OwnerResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListOwners::route('/'),
-            'create' => Pages\CreateOwner::route('/create'),
-            'edit' => Pages\EditOwner::route('/{record}/edit'),
+            'index' => Pages\ListProjects::route('/'),
+            'create' => Pages\CreateProject::route('/create'),
+            'edit' => Pages\EditProject::route('/{record}/edit'),
         ];
     }
 
     public static function getNavigationLabel(): string
     {
-        return 'Owner';
+        return 'Project';
     }
 
     public static function getModelLabel(): string
     {
-        return __('Owner'); // Label singular
+        return __('Project'); // Label singular
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Data Owner'); // Label plural
+        return __('Data Project'); // Label plural
     }
 
     public static function canViewAny(): bool
