@@ -71,21 +71,15 @@
             <div class="col-xl-2 col-lg-5 col-md-6">
               <div class="cs-footer-widget">
                 <div class="cs-footer-widget-title">
-                  <h6>OUR SERVICES</h6>
+                  <h6>OTHERS</h6>
                   <div class="cs-height-30"></div>
                 </div>
                 <div class="cs-constr-footer-menu">
                   <ul>
-                    <li><i class="flaticon-right-arrow themecolor"></i><a href="service-details.html"
-                        class="cs-text_b_line"><span>COMMERCIAL</span></a></li>
-                    <li><i class="flaticon-right-arrow themecolor"></i><a href="service-details.html"
-                        class="cs-text_b_line"><span>CONSULTING</span></a></li>
-                    <li><i class="flaticon-right-arrow themecolor"></i><a href="service-details.html"
-                        class="cs-text_b_line"><span>RENOVATIONS</span></a></li>
-                    <li><i class="flaticon-right-arrow themecolor"></i><a href="service-details.html"
-                        class="cs-text_b_line"><span>RESIDENTIAL</span></a></li>
-                    <li><i class="flaticon-right-arrow themecolor"></i> <a href="service-details.html"
-                        class="cs-text_b_line"><span>INDUSTRIAL</span></a></li>
+                    <li><i class="flaticon-right-arrow themecolor"></i><a href="{{ url('/project')}}"
+                        class="cs-text_b_line"><span>PROJECTS</span></a></li>
+                    <li><i class="flaticon-right-arrow themecolor"></i><a href="{{ url('/blog')}}"
+                        class="cs-text_b_line"><span>NEWS</span></a></li>
                   </ul>
                 </div>
               </div>
