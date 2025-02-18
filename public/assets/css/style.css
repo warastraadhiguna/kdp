@@ -3600,7 +3600,7 @@ button i {
 .cs-hero-wrap .cs-hero-social ul li {
   list-style: none;
   writing-mode: vertical-rl;
-  transform: rotate(-180deg);
+  /* transform: rotate(-180deg); */
   overflow: hidden;
   display: inline-block;
   cursor: pointer;
