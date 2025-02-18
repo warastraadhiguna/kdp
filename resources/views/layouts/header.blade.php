@@ -71,13 +71,13 @@
           <div class="header-contact">
 
             <div class="cs-header-phone theme-dark">
-              <span>Support 24:</span>
-              <a href="tel:{{ $company->phone }}" class="cs-text_b_line"><span>(406) 555-0120</span></a>
+              <span>Support:</span>
+              <a href="tel:{{ $company->phone }}" class="cs-text_b_line"><span>{{ $company->phone }}</span></a>
             </div>
 
             <div class="cs-header-email theme-dark">
               <span>Email Us:</span>
-              <a href="mailto:example@email.com" class="cs-text_b_line"><span>example@email.com</span></a>
+              <a href="mailto:{{ $company->email }}" class="cs-text_b_line"><span>{{ $company->email }}</span></a>
             </div>
 
           </div>

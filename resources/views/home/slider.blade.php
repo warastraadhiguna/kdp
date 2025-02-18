@@ -13,9 +13,9 @@
                   <div class="cs-hero-title-in cs-head">
                     <h1><span class="hero-strong-title constr-splite">{{ $slider->title }}</span> <span class="cs-hero-title-normal hero-second-splite">{{ $company->name }}</span></h1>
                   </div>
-                  <div class="ae-title hero-backdrop-text constr-splite">
+                  {{-- <div class="ae-title hero-backdrop-text constr-splite">
                     <h2>{{ $slider->title }}</h2>
-                  </div>
+                  </div> --}}
                  </div>
                   <p class="hero-subtitle">{{ $slider->note }}</p>
                   <div class="cs-couple-btn d-flex gap-3">
@@ -30,12 +30,23 @@
         </div>
       </div>
       <div class="cs-hero-social">
-        <ul>
-          <li><a href="https://dribbble.com" target="_blank">DRIBBBLE</a></li>
-          <li><a href="https://pinterest.com" target="_blank">PINTEREST</a></li>
-          <li><a href="https://linkedin.com" target="_blank">LINKEDIN</a></li>
-          <li><a href="https://facebook.com" target="_blank">FACEBOOK</a></li>
-        </ul>        
+          <ul>
+            @if($company->youtube)
+                                    <li>
+                <a href="{{ $company->youtube }}" target="_blank">
+                <i class="fa-brands fa-youtube"></i>
+                </a>
+            </li>
+            @endif
+
+            @if($company->linkedin)
+            <li>
+                <a href="{{ $company->linkedin }}" target="_blank">
+                <i class="flaticon-linkedin-big-logo"></i>
+                </a>
+            </li>
+            @endif
+          </ul>       
       </div>
       <div class="cs-arrow-style-fill">
         <div class="cs-left-arrow hero-swiper-button-prev">

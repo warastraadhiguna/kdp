@@ -2,7 +2,7 @@
   <footer>
     <div class="cs-constr-footer-container theme-dark" data-src="{{ asset('assets/img/footer-bg.png')}}">
 
-      <div class="cs-height-150"></div>
+      <div class="cs-height-50"></div>
 
       <div class="cs-constr-footer-content">
         <div class="container">
@@ -86,15 +86,16 @@
             </div>
             <div class="col-xl-3 col-lg-7 col-md-6">
               <div class="cs-footer-widget">
-                <p>Phone</p>
-                <a href="tel:{{ $company->phone }}" class="cs-text-style-h5">{{ $company->phone }}</a>
+                <h6>Phone</h6>
+                <a href="tel:{{ $company->phone }}" class="cs-font-size-20">{{ $company->phone }}</a>
                 <div class="cs-height-30"></div>
-                <p>Email</p>
-                <a href="mailto:{{ $company->email }}" class="cs-text-style-h5">{{ $company->email }}</a>
+                <h6>Email</h6>
+                <a href="mailto:{{ $company->email }}" class="cs-font-size-20">{{ $company->email }}</a>
                 <div class="cs-height-30"></div>
-                <p>Address:</p>
+                <h6>Address:</h6>
                 <div class="cs-height-5"></div>
                 <span class="cs-font-size-20">{{ $company->address }}</span>
+                <br/>
                 <span class="cs-font-size-20">{{ $company->city }}</span>                
               </div>
             </div>
@@ -102,7 +103,7 @@
         </div>
       </div>
 
-      <div class="cs-height-130"></div>
+      <div class="cs-height-50"></div>
 
       <div class="cs-theme-copyright">
         <div class="cs-footer-copy-text">

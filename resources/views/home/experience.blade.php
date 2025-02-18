@@ -3,9 +3,9 @@
       <div class="img-ae background-parallax">
         <div class="parallax-image max-height-750">
           <img src="{{ asset('storage/' . $company->parallax_image)}}" alt="">
-          <div class="ae-title">
+          {{-- <div class="ae-title">
             <h2>{{ $company->application_name }}</h2>
-          </div>
+          </div> --}}
         </div>
       </div>
       <div class="content-for-parallax">

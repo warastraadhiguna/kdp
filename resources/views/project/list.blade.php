@@ -75,7 +75,7 @@
             <img id="customModalImage" src="" class="modal-image">
         </div>
     </div>
-    <button class="close-btn-modal">Close</button>
+    {{-- <button class="close-btn-modal">Close</button> --}}
   </div>
 </div>
 
@@ -116,6 +116,7 @@ document.querySelector(".close-btn").addEventListener("click", function() {
 document.querySelector(".close-btn-modal").addEventListener("click", function() {
     document.getElementById("customModal").style.display = "none";
 });
+
 </script>
 
 
