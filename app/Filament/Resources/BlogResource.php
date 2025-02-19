@@ -122,6 +122,7 @@ class BlogResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->recordUrl(fn ($record) => null)
             ->columns([
                 ImageColumn::make('image')->label('Gambar'),
                 TextColumn::make('title')->label('Judul')->sortable()->searchable(),

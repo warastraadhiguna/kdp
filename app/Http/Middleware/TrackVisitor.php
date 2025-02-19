@@ -3,16 +3,19 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
-use App\Models\Visitor;
 use Carbon\Carbon;
+use App\Models\Visitor;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class TrackVisitor
 {
     public function handle(Request $request, Closure $next)
     {
-        // Ambil IP Address pengunjung
-        $ip = $request->ip();
+        if ($request->is('admin/*') || $request->is('filament/*')) {
+            return $next($request); // ✅ Lewati middleware untuk admin
+        }
+        $ip = "125.166.96.241";
         $today = Carbon::today()->toDateString();
 
         // Cek apakah IP ini sudah tercatat hari ini
@@ -21,11 +24,18 @@ class TrackVisitor
             ->first();
 
         if (!$existingVisitor) {
-            // Simpan data pengunjung baru
+            // 🔍 Panggil API untuk mendapatkan lokasi berdasarkan IP
+            $response = Http::get("http://ip-api.com/json/{$ip}?fields=status,country,city");
+
+            // Jika request sukses, ambil datanya
+            $locationData = $response->successful() ? $response->json() : [];
+
             Visitor::create([
                 'ip_address' => $ip,
                 'user_agent' => $request->header('User-Agent'),
                 'visited_at' => $today,
+                'country' => $locationData['status'] === 'success' ? $locationData['country'] : null,
+                'city' => $locationData['status'] === 'success' ? $locationData['city'] : null,
             ]);
         }
 

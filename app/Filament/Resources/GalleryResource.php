@@ -37,6 +37,7 @@ class GalleryResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->recordUrl(fn ($record) => null)
             ->columns([
                 TextColumn::make('title')->label('Judul')->searchable(['title']),
                 ImageColumn::make('image')

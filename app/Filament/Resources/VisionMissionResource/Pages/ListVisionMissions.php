@@ -11,13 +11,4 @@ class ListVisionMissions extends ListRecords
 {
     protected static string $resource = VisionMissionResource::class;
 
-    public function getHeaderActions(): array
-    {
-        return [
-            Action::make('edit_vision_mission')
-                ->label('Edit Vission Mission')
-                ->icon('heroicon-o-pencil')
-                ->url(static::getResource()::getUrl('edit', ['record' => 1])),
-        ];
-    }
 }

@@ -28,6 +28,7 @@ class MessageResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->recordUrl(fn ($record) => null)
             ->columns([
                 TextColumn::make('first_name')->label('First Name')->searchable(['first_name', 'last_name', 'phone', 'email', 'subject']),
                 TextColumn::make('last_name')->label('First Name'),
