@@ -15,7 +15,7 @@ class TrackVisitor
         if ($request->is('admin/*') || $request->is('filament/*')) {
             return $next($request); // ✅ Lewati middleware untuk admin
         }
-        $ip = "125.166.96.241";
+        $ip = $request->ip();
         $today = Carbon::today()->toDateString();
 
         // Cek apakah IP ini sudah tercatat hari ini

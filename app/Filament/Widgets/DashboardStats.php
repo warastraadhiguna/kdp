@@ -17,8 +17,9 @@ class DashboardStats extends BaseWidget
             Stat::make('Total Message Baru', Message::where('is_read', '0')->count())
                 ->icon('heroicon-o-envelope')
                 ->url(route('filament.admin.resources.messages.index')),
-            Stat::make('Total Pengunjung Hari Ini', Visitor::whereDate('visited_at', Carbon::today())->count())
-                ->icon('heroicon-o-eye'),
+            Stat::make('Total Pengunjung Hari Ini', Visitor::whereDate('visited_at', Carbon::today())   ->count())
+                ->icon('heroicon-o-eye')
+                ->url(route('filament.admin.resources.visitors.index')),
             // Stat::make('Total Pesanan', Order::count())
             //     ->icon('heroicon-o-shopping-cart'),
 
