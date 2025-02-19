@@ -31,7 +31,9 @@ class Company extends Model
         'vision',
         'mission',
         'vision_mission_image',
-        'parallax_image'
+        'parallax_image',
+        'team_total',
+        'facility_total'
     ];
     protected $casts = [
         'establishment_date' => 'date', // Pastikan ini ada

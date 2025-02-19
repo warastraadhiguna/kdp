@@ -58,6 +58,8 @@ class CompanyResource extends Resource
                             ->label('LinkedIn'),
                         TextInput::make('youtube')
                             ->label('Youtube'),
+                        TextInput::make('team_total')->label('Total Team')->minValue(0)->required(),
+                        TextInput::make('facility_total')->label('Total Facilitas (Alat)')->minValue(0)->required(),
                         FileUpload::make('icon')
                             ->label('Icon')
                             ->directory('images')

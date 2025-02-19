@@ -23,6 +23,7 @@ class HomeController extends Controller
             'owners'  => Owner::orderBy('index')->get(),
             'projects' => Project::with('owner')->orderBy('index')->where('index', ">", "0")->limit(4)->get(),
             'blogs' => Blog::orderBy('index')->where('index', ">", "0")->limit(3)->get(),
+            'projectTotal' => Project::count()
         ];
         return view('home.index', $data);
     }
