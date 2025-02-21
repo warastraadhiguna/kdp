@@ -37,9 +37,7 @@ class BlogResource extends Resource
             ->schema([
                 TextInput::make('title')
                     ->label('Judul')
-                    ->required()
-                    ->live()
-                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
+                    ->required(),
                 Textarea::make('summary')
                     ->label('Rangkuman')
                     ->required(),

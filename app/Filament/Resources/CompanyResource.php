@@ -13,6 +13,11 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use App\Filament\Resources\CompanyResource\Pages;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Drivers\Gd\Encoders\JpegEncoder;
+use Intervention\Image\ImageManager;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class CompanyResource extends Resource
 {
@@ -62,32 +67,180 @@ class CompanyResource extends Resource
                         TextInput::make('facility_total')->label('Total Facilitas (Alat)')->minValue(0)->required(),
                         FileUpload::make('icon')
                             ->label('Icon')
-                            ->directory('images')
+                            // ->directory('images')
                             ->image()
                             ->maxSize(2048)
-                            ->getUploadedFileNameForStorageUsing(fn () => 'icon.png')
-                            ->required(),
+                            // ->getUploadedFileNameForStorageUsing(fn () => 'icon.png')
+                            ->required()
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                if (!$state instanceof TemporaryUploadedFile) {
+                                    return;
+                                }
+
+                                $fileName = 'icon' . time() .  '.' . $state->getClientOriginalExtension();
+
+                                $storedPath = $state->storePubliclyAs('images', $fileName, 'public');
+
+                                $publicPath = 'images/' . $fileName;
+                                $storagePath = Storage::disk('public')->path($publicPath);
+
+                                if (!Storage::disk('public')->exists($publicPath)) {
+                                    dd("File tidak ditemukan setelah disimpan: " . $storagePath);
+                                }
+
+                                $realPath = realpath($storagePath);
+                                if (!$realPath) {
+                                    dd("Path tidak valid: " . $storagePath);
+                                }
+
+                                $mimeType = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $realPath);
+                                if (!in_array($mimeType, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
+                                    dd("file bukan gambar yang valid");
+                                }
+
+                                $manager = new ImageManager(new Driver());
+                                try {
+                                    $image = $manager->read($realPath)
+                                        ->cover(16, 16)
+                                        ->encode(new JpegEncoder(quality: 80));
+                                    Storage::disk('public')->put($publicPath, (string) $image);
+                                    $set('image', [$publicPath]);
+                                } catch (\Exception $e) {
+                                    dd("Error memproses gambar: " . $e->getMessage());
+                                }
+                            }),
                         FileUpload::make('image')
                             ->label('Logo')
-                            ->directory('images')
+                            // ->directory('images')
                             ->image()
                             ->maxSize(2048)
-                            ->getUploadedFileNameForStorageUsing(fn () => 'logo.png')
-                            ->required(),
+                            // ->getUploadedFileNameForStorageUsing(fn () => 'logo.png')
+                            ->required()
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                if (!$state instanceof TemporaryUploadedFile) {
+                                    return;
+                                }
+
+                                $fileName = 'logo' . time() .  '.' . $state->getClientOriginalExtension();
+
+                                $storedPath = $state->storePubliclyAs('images', $fileName, 'public');
+
+                                $publicPath = 'images/' . $fileName;
+                                $storagePath = Storage::disk('public')->path($publicPath);
+
+                                if (!Storage::disk('public')->exists($publicPath)) {
+                                    dd("File tidak ditemukan setelah disimpan: " . $storagePath);
+                                }
+
+                                $realPath = realpath($storagePath);
+                                if (!$realPath) {
+                                    dd("Path tidak valid: " . $storagePath);
+                                }
+
+                                $mimeType = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $realPath);
+                                if (!in_array($mimeType, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
+                                    dd("file bukan gambar yang valid");
+                                }
+
+                                $manager = new ImageManager(new Driver());
+                                try {
+                                    $image = $manager->read($realPath)
+                                        ->cover(194, 37)
+                                        ->encode(new JpegEncoder(quality: 80));
+                                    Storage::disk('public')->put($publicPath, (string) $image);
+                                    $set('image', [$publicPath]);
+                                } catch (\Exception $e) {
+                                    dd("Error memproses gambar: " . $e->getMessage());
+                                }
+                            }),
                         FileUpload::make('breadcrumb_image')
-                            ->label('Gambar Background Halaman')
-                            ->directory('images')
+                            ->label('Gambar Background Halaman (1920 x 465)')
+                            // ->directory('images')
                             ->image()
                             ->maxSize(2048)
-                            ->getUploadedFileNameForStorageUsing(fn () => 'breadcrumb.png')
-                            ->required(),
+                            // ->getUploadedFileNameForStorageUsing(fn () => 'breadcrumb.png')
+                            ->required()
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                if (!$state instanceof TemporaryUploadedFile) {
+                                    return;
+                                }
+
+                                $fileName = 'breadcrumb' . time() .  '.' . $state->getClientOriginalExtension();
+
+                                $storedPath = $state->storePubliclyAs('images', $fileName, 'public');
+
+                                $publicPath = 'images/' . $fileName;
+                                $storagePath = Storage::disk('public')->path($publicPath);
+
+                                if (!Storage::disk('public')->exists($publicPath)) {
+                                    dd("File tidak ditemukan setelah disimpan: " . $storagePath);
+                                }
+
+                                $realPath = realpath($storagePath);
+                                if (!$realPath) {
+                                    dd("Path tidak valid: " . $storagePath);
+                                }
+
+                                $mimeType = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $realPath);
+                                if (!in_array($mimeType, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
+                                    dd("file bukan gambar yang valid");
+                                }
+
+                                $manager = new ImageManager(new Driver());
+                                try {
+                                    $image = $manager->read($realPath)
+                                        ->cover(1920, 465)
+                                        ->encode(new JpegEncoder(quality: 80));
+                                    Storage::disk('public')->put($publicPath, (string) $image);
+                                    $set('image', [$publicPath]);
+                                } catch (\Exception $e) {
+                                    dd("Error memproses gambar: " . $e->getMessage());
+                                }
+                            }),
                         FileUpload::make('parallax_image')
                             ->label('Parallax Image (1920x751)')
-                            ->directory('images')
+                            // ->directory('images')
                             ->image()
                             ->maxSize(2048)
-                            ->getUploadedFileNameForStorageUsing(fn () => 'parallax.png')
-                            ->required(),
+                            // ->getUploadedFileNameForStorageUsing(fn () => 'parallax.png')
+                            ->required()
+                        ->afterStateUpdated(function ($state, callable $set) {
+                            if (!$state instanceof TemporaryUploadedFile) {
+                                return;
+                            }
+
+                            $fileName = 'parallax' . time() .  '.' . $state->getClientOriginalExtension();
+
+                            $storedPath = $state->storePubliclyAs('images', $fileName, 'public');
+
+                            $publicPath = 'images/' . $fileName;
+                            $storagePath = Storage::disk('public')->path($publicPath);
+
+                            if (!Storage::disk('public')->exists($publicPath)) {
+                                dd("File tidak ditemukan setelah disimpan: " . $storagePath);
+                            }
+
+                            $realPath = realpath($storagePath);
+                            if (!$realPath) {
+                                dd("Path tidak valid: " . $storagePath);
+                            }
+
+                            $mimeType = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $realPath);
+                            if (!in_array($mimeType, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
+                                dd("file bukan gambar yang valid");
+                            }
+
+                            $manager = new ImageManager(new Driver());
+                            try {
+                                $image = $manager->read($realPath)
+                                    ->cover(1920, 751)
+                                    ->encode(new JpegEncoder(quality: 80));
+                                Storage::disk('public')->put($publicPath, (string) $image);
+                                $set('image', [$publicPath]);
+                            } catch (\Exception $e) {
+                                dd("Error memproses gambar: " . $e->getMessage());
+                            }
+                        }),
                     ])
             ]);
     }

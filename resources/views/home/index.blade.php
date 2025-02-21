@@ -32,9 +32,12 @@
   <!-- Start Features Section -->
   {{-- @include('home.feature');   --}}
   <!-- Start Features Section -->
-
+  @include('home.client');  
   <!-- Start Counter With CTA Section -->
+  
+  <div class="cs-section-height"></div>
   @include('home.counter');  
+  <div class="cs-section-height"></div>
   <!-- End Counter With CTA Section -->
 
   {{-- <div class="cs-section-height"></div> --}}
@@ -68,8 +71,6 @@
   {{-- <div class="cs-section-height"></div> --}}
   <!-- Section to Section Gap -->
 
- 
-   
   <div class="cs-section-height"></div>
   <!-- Section to Section Gap -->
 

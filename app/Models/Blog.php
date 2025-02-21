@@ -48,7 +48,7 @@ class Blog extends Model
         });
 
         static::deleting(function ($model) {
-            $fields = ['image', 'breadcrumb_image', 'about_us_image', 'vision_mission_image', 'parallax_image'];
+            $fields = ['image'];
 
             foreach ($fields as $field) {
                 if ($model->$field && Storage::disk('public')->exists($model->$field)) {

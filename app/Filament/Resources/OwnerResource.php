@@ -36,8 +36,8 @@ class OwnerResource extends Resource
                     ->label('Keterangan'),
                 FileUpload::make('image')
                     ->label('Logo (430 x 401)')
-                    ->directory('images/owners') // Direktori penyimpanan di `storage/app/public`
-                    ->image() // Validasi gambar
+                    ->directory('images/owners')
+                    ->image()
                     ->required()
                     ->maxSize(2048)
                     ->afterStateUpdated(function ($state, callable $set) {

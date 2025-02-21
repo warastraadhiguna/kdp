@@ -22,14 +22,26 @@ class Owner extends Model
         parent::boot();
 
         static::updating(function ($model) {
-            if ($model->isDirty('image')) {
-                Storage::disk('public')->delete($model->getOriginal('image'));
+            $fields = ['image'];
+
+            foreach ($fields as $field) {
+                if ($model->isDirty($field)) {
+                    $oldFile = $model->getOriginal($field);
+
+                    if ($oldFile && Storage::disk('public')->exists($oldFile)) {
+                        Storage::disk('public')->delete($oldFile);
+                    }
+                }
             }
         });
 
         static::deleting(function ($model) {
-            if ($model->image) {
-                Storage::disk('public')->delete($model->image);
+            $fields = ['image'];
+
+            foreach ($fields as $field) {
+                if ($model->$field && Storage::disk('public')->exists($model->$field)) {
+                    Storage::disk('public')->delete($model->$field);
+                }
             }
         });
     }
