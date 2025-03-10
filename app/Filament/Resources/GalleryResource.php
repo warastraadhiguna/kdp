@@ -2,12 +2,14 @@
 
 namespace App\Filament\Resources;
 
+use App\Models\GalleryCategory;
 use Filament\Tables;
 use App\Models\Gallery;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Auth;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
@@ -19,11 +21,17 @@ class GalleryResource extends Resource
     protected static ?string $model = Gallery::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-photo';
-    protected static ?string $navigationGroup = 'Pengaturan Web';
+    protected static ?string $navigationGroup = 'Pengaturan Gallery';
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                Select::make('gallery_category_id')
+                    ->label('Category')
+                    ->relationship('galleryCategory', 'title')
+                    ->options(fn () => GalleryCategory::where('index', '>', '0')->pluck('title', 'id'))
+                    ->searchable()
+                    ->required(),
                 TextInput::make('title')->label('Judul')->required(),
                 FileUpload::make('image')
                     ->label('Gambar')
@@ -39,6 +47,7 @@ class GalleryResource extends Resource
         return $table
             ->recordUrl(fn ($record) => null)
             ->columns([
+                TextColumn::make('galleryCategory.title')->label('Kategori'),
                 TextColumn::make('title')->label('Judul')->searchable(['title']),
                 ImageColumn::make('image')
                     ->label('Gambar')

@@ -28,11 +28,24 @@
   <!-- End Common BreadCrumb -->
 
 
- <div class="cs-section-height"></div>
+  <div class="cs-section-height"></div>
+ {{-- <div class="cs-section-height"></div> --}}
   <!-- Section to Section Gap -->
 
     <!-- Start Gallery -->
     <section class="container">
+              <div class="max-width-1120 m-auto">
+                <h4>
+                    {{ $galleryCategory->title }}
+                </h4>
+                <div class="cs-height-30"></div>                
+                <p  style="white-space: pre-line;text-align:justify; font-weight: bold;">{{ $galleryCategory->introduction }}
+                </p>
+
+                <div class="cs-height-40"></div>
+
+              <div class="cs-container-border"></div>
+            </div>      
         <div class="gallery" id="static-thumbnails">
 
             {{-- <div class="item gallery-horizontal">
@@ -43,8 +56,11 @@
                     </div>
                 </a>
             </div> --}}
+
+
+
             @foreach($galleries as $key => $gallery)
-              <div class="item gallery-horizontal {{ $key %3 != 0 ? 'gallery-vertical' : '' }}">
+              <div class="item {{ $key %3 != 0 ? '' : 'gallery-vertical' }}">
                   <a href="{{ asset('storage/' . $gallery->image ) }}">
                       <img src="{{ asset('storage/' . $gallery->image ) }}" alt="Phto" />
                       <div class="frame gallery-hover-icon">

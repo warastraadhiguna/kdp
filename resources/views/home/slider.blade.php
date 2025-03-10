@@ -1,5 +1,8 @@
-  <!-- Start Hero Section -->
-  <section>
+<?php 
+  $aoses = ['flip-left','fade-down-left','fade-down','fade-up-right','flip-down','zoom-in-down'];
+  $randomNumber = rand(0, 5);
+?>
+<section>
     <div class="cs-height-100"></div>
     <div class="cs-hero-wrap">
       <div class="cs-hero-wrap-in">
@@ -7,7 +10,7 @@
           <div class="swiper-wrapper">
             @foreach($sliders as $slider)
             <div class="swiper-slide">
-              <div class="hero-slider-item" data-src="{{ asset('storage/'. $slider->image)}}">
+              <div class="hero-slider-item" data-aos="{{ $aoses[$randomNumber] }}"  data-src="{{ asset('storage/'. $slider->image)}}">
                 <div class="slider-item-content">
                  <div class="cs-hero-title">
                   <div class="cs-hero-title-in cs-head">
@@ -62,3 +65,4 @@
     </div>
   </section>
   <!-- End Hero Section -->
+ 

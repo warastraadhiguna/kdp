@@ -2,25 +2,42 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Gallery extends Model
+class TeamMember extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'title',
+        'name',
+        'slug',
+        'position',
+        'description',
+        'email',
+        'quote',
+        'instagram',
+        'linkedin',
         'image',
-        'gallery_category_id'
+        'index',
     ];
 
     protected static function boot()
     {
         parent::boot();
 
+        static::creating(function ($model) {
+            if (empty($model->slug)) {
+                $model->slug = Str::slug($model->name);
+            }
+        });
+
         static::updating(function ($model) {
+            if ($model->isDirty("name")) {
+                $model->slug = Str::slug($model->name);
+            }
+
             $fields = ['image'];
 
             foreach ($fields as $field) {
@@ -43,10 +60,5 @@ class Gallery extends Model
                 }
             }
         });
-    }
-
-    public function galleryCategory()
-    {
-        return $this->belongsTo(GalleryCategory::class);
     }
 }

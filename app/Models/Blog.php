@@ -24,7 +24,7 @@ class Blog extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            if (empty($blog->slug)) {
+            if (empty($model->slug)) {
                 $model->slug = Str::slug($model->title);
             }
         });

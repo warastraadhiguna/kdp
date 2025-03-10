@@ -14,7 +14,21 @@
 
   <div class="cs-section-height"></div>
   <!-- Section to Section Gap -->
- <!-- Start Experience & Image Section -->
+
+  <!-- Section to Section Gap -->
+  <!-- Start Why Choose Us & Video -->
+  @include('home.video');
+  <!-- End Why Choose Us & Video -->
+
+  <div class="cs-section-height"></div>
+  <!-- Section to Section Gap -->
+
+  <!-- Start Team Section -->
+  @include('home.member');
+  <!-- End Team Section -->
+
+  <div class="cs-section-height"></div>
+  <!-- Start Experience & Image Section -->
   @include('home.experience');
   <!-- Start Experience & Image Section -->
   <div class="cs-section-height"></div>
@@ -41,28 +55,13 @@
   <!-- End Counter With CTA Section -->
 
   {{-- <div class="cs-section-height"></div> --}}
-  <!-- Section to Section Gap -->
 
-  <!-- Start Team Section -->
-  {{-- @include('home.member'); --}}
-  <!-- End Team Section -->
-
-  {{-- <div class="cs-section-height"></div> --}}
-  <!-- Section to Section Gap -->
 
   <!-- Start Testimonial -->
   {{-- @include('home.testimoni'); --}}
   <!-- End Testimonial -->
 
-  {{-- <div class="cs-section-height"></div> --}}
-  <!-- Section to Section Gap -->
 
-  <!-- Start Why Choose Us & Video -->
-  {{-- @include('home.video'); --}}
-  <!-- End Why Choose Us & Video -->
-
-  {{-- <div class="cs-section-height"></div> --}}
-  <!-- Section to Section Gap -->
 {{-- @include('home.pricing'); --}}
   <!-- Start Pricing -->
 

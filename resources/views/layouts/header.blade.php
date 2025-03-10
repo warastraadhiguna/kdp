@@ -26,11 +26,20 @@
                 <a href="{{ url('/about')}}" class="cs-text_b_line"><span>ABOUT US</span></a>
               </li>
               <li>
-                <a href="{{ url('/gallery')}}" class="cs-text_b_line"><span>GALLERY</span></a>
-              </li>    
-              <li>
                 <a href="{{ url('/project')}}" class="cs-text_b_line"><span>PROJECTS</span></a>
-              </li>                  
+              </li>    
+
+              <li class="menu-item-has-children">
+                <a href="#" class="cs-text_b_line"><span>GALLERY</span></a>
+                <ul>
+                  @foreach($shownGalleryCategories as $shownGalleryCategory)
+                    <li>
+                      <a href="{{ url("gallery/" . $shownGalleryCategory->slug )}}" class="cs-text_b_line"><span>{{ str($shownGalleryCategory->title) }}</span></a>
+                    </li>
+                  @endforeach
+                </ul>
+                <span class="cs_munu_dropdown_toggle"></span>
+              </li>                                   
               <li class="menu-item-has-children">
                 <a href="#" class="cs-text_b_line"><span>NEWS & INSIGHTS</span></a>
                 <ul>
@@ -45,7 +54,7 @@
                   </li>
                 </ul>
                 <span class="cs_munu_dropdown_toggle"></span>
-              </li>
+              </li>           
               <li>
                 <a href="{{ url('/contact')}}" class="cs-text_b_line"><span>CONTACT US</span></a>
               </li>

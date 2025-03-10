@@ -28,13 +28,13 @@
                     </div>
                     <div class="cs-height-80"></div>
                     <div class="list-feature">
-                        <h6 data-aos="fade-up" data-aos-duration="300" style="text-align:center;">Vision</h6>
+                        <h6 data-aos="fade-up" data-aos-duration="300" style="text-align:center;font-size: 30px;">Vision</h6>
                         <div class="cs-height-20"></div>
-                        <p style="white-space: pre-line;text-align:center;">{{ $company->vision }}</p>
+                        <p style="white-space: pre-line;text-align:center; font-size: 20px;">{{ $company->vision }}</p>
                         <div class="cs-height-50"></div>
-                        <h6 data-aos="fade-up" data-aos-duration="400" style="text-align:center;">Mission</h6>
+                        <h6 data-aos="fade-down" data-aos-duration="400" style="text-align:center;font-size: 30px;">Mission</h6>
                         <div class="cs-height-20"></div>
-                        <p style="white-space: pre-line;text-align:center;">{{ $company->mission }}</p>
+                        <p style="white-space: pre-line;text-align:center; font-size: 20px;">{{ $company->mission }}</p>
                     </div>
                     <div class="cs-height-40"></div>
 

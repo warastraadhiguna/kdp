@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\GalleryCategory;
 use App\Models\Owner;
 use App\Models\Client;
 use App\Models\Slider;
@@ -10,6 +11,7 @@ use App\Models\Gallery;
 use App\Models\Message;
 use App\Models\BriefHistory;
 use App\Models\Project;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,6 +25,7 @@ class HomeController extends Controller
             'owners'  => Owner::orderBy('index')->get(),
             'projects' => Project::with('owner')->orderBy('index')->where('index', ">", "0")->limit(4)->get(),
             'blogs' => Blog::orderBy('index')->where('index', ">", "0")->limit(3)->get(),
+            'teamMembers' => TeamMember::orderBy('index')->where('index', ">", "0")->get(),
             'projectTotal' => Project::count()
         ];
         return view('home.index', $data);
@@ -38,14 +41,6 @@ class HomeController extends Controller
             'years' =>  $years,
         ];
         return view('about.index', $data);
-    }
-
-    public function gallery()
-    {
-        $data = [
-            'galleries' => Gallery::orderBy('title')->get(),
-        ];
-        return view('gallery.index', $data);
     }
 
     public function contact()
@@ -116,7 +111,16 @@ class HomeController extends Controller
 
         return redirect("/contact?status=success");
     }
+    public function gallery($slug)
+    {
+        $galleryCategory = GalleryCategory::where('slug', $slug)->where('index', ">", "0")->firstOrFail();
 
+        $data = [
+            'galleryCategory' => $galleryCategory,
+            'galleries' => Gallery::where("gallery_category_id", $galleryCategory->id)->orderBy('title')->get(),
+        ];
+        return view('gallery.index', $data);
+    }
     public function blog()
     {
         $data = [
@@ -144,5 +148,15 @@ class HomeController extends Controller
         ];
 
         return view('project.index', $data);
+    }
+
+    public function teamMember($slug)
+    {
+        $teamMember = TeamMember::where('slug', $slug)->where('index', ">", "0")->firstOrFail();
+        $data = [
+            "teamMember" => $teamMember ,
+        ];
+
+        return view('team.detail', $data);
     }
 }

@@ -65,6 +65,53 @@ class CompanyResource extends Resource
                             ->label('Youtube'),
                         TextInput::make('team_total')->label('Total Team')->minValue(0)->required(),
                         TextInput::make('facility_total')->label('Total Facilitas (Alat)')->minValue(0)->required(),
+                        Textarea::make('video_link')
+                            ->label('Link Video')
+                            ->required(),
+                        FileUpload::make('video_thumbnail_image')
+                            ->label('Thumbnail Video (571x336)')
+                            // ->directory('images')
+                            ->image()
+                            ->maxSize(2048)
+                            // ->getUploadedFileNameForStorageUsing(fn () => 'logo.png')
+                            ->required()
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                if (!$state instanceof TemporaryUploadedFile) {
+                                    return;
+                                }
+
+                                $fileName = 'video_thumbnail' . time() .  '.' . $state->getClientOriginalExtension();
+
+                                $storedPath = $state->storePubliclyAs('images', $fileName, 'public');
+
+                                $publicPath = 'images/' . $fileName;
+                                $storagePath = Storage::disk('public')->path($publicPath);
+
+                                if (!Storage::disk('public')->exists($publicPath)) {
+                                    dd("File tidak ditemukan setelah disimpan: " . $storagePath);
+                                }
+
+                                $realPath = realpath($storagePath);
+                                if (!$realPath) {
+                                    dd("Path tidak valid: " . $storagePath);
+                                }
+
+                                $mimeType = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $realPath);
+                                if (!in_array($mimeType, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
+                                    dd("file bukan gambar yang valid");
+                                }
+
+                                $manager = new ImageManager(new Driver());
+                                try {
+                                    $image = $manager->read($realPath)
+                                        ->cover(571, 336)
+                                        ->encode(new JpegEncoder(quality: 80));
+                                    Storage::disk('public')->put($publicPath, (string) $image);
+                                    $set('image', [$publicPath]);
+                                } catch (\Exception $e) {
+                                    dd("Error memproses gambar: " . $e->getMessage());
+                                }
+                            }),
                         FileUpload::make('icon')
                             ->label('Icon')
                             // ->directory('images')

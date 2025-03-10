@@ -26,6 +26,8 @@ class Company extends Model
         'breadcrumb_image',
         'linkedin',
         'youtube',
+        'video_link',
+        'video_thumbnail_image',
         'about_us',
         'about_us_image',
         'vision',
@@ -43,7 +45,7 @@ class Company extends Model
         parent::boot();
 
         static::updating(function ($model) {
-            $fields = ['image', 'breadcrumb_image', 'about_us_image', 'vision_mission_image', 'parallax_image'];
+            $fields = ['image', 'breadcrumb_image', 'about_us_image', 'vision_mission_image', 'parallax_image','video_thumbnail_image'];
 
             foreach ($fields as $field) {
                 if ($model->isDirty($field)) {
@@ -57,7 +59,7 @@ class Company extends Model
         });
 
         static::deleting(function ($model) {
-            $fields = ['image', 'breadcrumb_image', 'about_us_image', 'vision_mission_image', 'parallax_image'];
+            $fields = ['image', 'breadcrumb_image', 'about_us_image', 'vision_mission_image', 'parallax_image','video_thumbnail_image'];
 
             foreach ($fields as $field) {
                 if ($model->$field && Storage::disk('public')->exists($model->$field)) {
