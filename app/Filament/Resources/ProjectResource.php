@@ -41,7 +41,7 @@ class ProjectResource extends Resource
                     ->searchable()
                     ->required(),
                 TextInput::make('name')->label('Nama')->required(),
-                TextInput::make('contract_number')->label('No Contract')->required(),
+                Textarea::make('scope')->label('Ruang Lingkup')->required(),
                 TextInput::make('location')->label('Location')->required(),
                 Select::make('owner_id')
                     ->label('Owner')
@@ -118,7 +118,7 @@ class ProjectResource extends Resource
             ->recordUrl(fn ($record) => null)
             ->columns([
                 TextColumn::make('projectCategory.title')->label('Kategori'),
-                TextColumn::make('name')->label('Nama')->searchable(['name','contract_number']),
+                TextColumn::make('name')->label('Nama')->searchable(['name']),
                 TextColumn::make('location')->label('Lokasi'),
                 TextColumn::make('owner.name')->label('Owner'),
                 TextColumn::make('index')->label('Indeks'),
@@ -131,6 +131,7 @@ class ProjectResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

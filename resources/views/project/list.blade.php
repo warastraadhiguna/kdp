@@ -27,7 +27,7 @@
               </div>
               <a href="#" class="open-modal" 
                 data-name="{{ $project->name }}"
-                data-contract="{{ $project->contract_number }}"
+                data-scope="{{ $project->scope }}"
                 data-location="{{ $project->location }}"
                 data-owner="{{ $project->owner->name }}"
                 data-schedule="{{ $project->schedule }}"
@@ -37,7 +37,7 @@
 
               <a href="#" class="open-modal" 
                 data-name="{{ $project->name }}"
-                data-contract="{{ $project->contract_number }}"
+                data-scope="{{ $project->scope }}"
                 data-location="{{ $project->location }}"
                 data-owner="{{ $project->owner->name }}"
                 data-schedule="{{ $project->schedule }}"
@@ -66,8 +66,8 @@
             <h3 id="customModalTitle" class="modal-title"></h3>
             <table class="modal-table">
                 <tr>
-                    <td><strong>Contract Number:</strong></td>
-                    <td id="customModalContract"></td>
+                    <td><strong>Scope:</strong></td>
+                    <td id="customModalScope"></td>
                 </tr>
                 <tr>
                     <td><strong>Location:</strong></td>
@@ -101,7 +101,7 @@ document.querySelectorAll(".open-modal").forEach(el => {
 
         // Ambil data dari atribut
         let name = this.getAttribute("data-name");
-        let contract = this.getAttribute("data-contract");
+        let scope = this.getAttribute("data-scope");
         let location = this.getAttribute("data-location");
         let owner = this.getAttribute("data-owner");
         let schedule = this.getAttribute("data-schedule");
@@ -109,7 +109,7 @@ document.querySelectorAll(".open-modal").forEach(el => {
 
         // Masukkan data ke dalam modal
         document.getElementById("customModalTitle").innerText = name;
-        document.getElementById("customModalContract").innerText = contract;
+        document.getElementById("customModalScope").innerText = scope;
         document.getElementById("customModalLocation").innerText = location;
         document.getElementById("customModalOwner").innerText = owner;
         document.getElementById("customModalSchedule").innerText = schedule;
