@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Models\ProjectCategory;
 use Filament\Tables;
 use App\Models\Owner;
 use App\Models\Project;
@@ -28,11 +29,17 @@ class ProjectResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
-    protected static ?string $navigationGroup = 'Pengaturan Dasar';
+    protected static ?string $navigationGroup = 'Pengaturan Project';
     public static function form(Form $form): Form
     {
         return $form
            ->schema([
+                Select::make('project_category_id')
+                    ->label('Category')
+                    ->relationship('projectCategory', 'title')
+                    ->options(fn () => ProjectCategory::where('index', '>', '0')->pluck('title', 'id'))
+                    ->searchable()
+                    ->required(),
                 TextInput::make('name')->label('Nama')->required(),
                 TextInput::make('contract_number')->label('No Contract')->required(),
                 TextInput::make('location')->label('Location')->required(),
@@ -110,6 +117,7 @@ class ProjectResource extends Resource
         return $table
             ->recordUrl(fn ($record) => null)
             ->columns([
+                TextColumn::make('projectCategory.title')->label('Kategori'),
                 TextColumn::make('name')->label('Nama')->searchable(['name','contract_number']),
                 TextColumn::make('location')->label('Lokasi'),
                 TextColumn::make('owner.name')->label('Owner'),

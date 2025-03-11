@@ -21,8 +21,8 @@ class AboutUsResource extends Resource
 {
     protected static ?string $model = Company::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
-    protected static ?string $navigationGroup = 'Pengaturan Web';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationGroup = 'Pengaturan About';
     public static function form(Form $form): Form
     {
         return $form

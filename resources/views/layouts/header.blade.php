@@ -22,12 +22,31 @@
               <li>
                 <a href="{{ url('/')}}" class="cs-text_b_line"><span>HOME</span></a>
               </li>
-              <li>
-                <a href="{{ url('/about')}}" class="cs-text_b_line"><span>ABOUT US</span></a>
-              </li>
-              <li>
-                <a href="{{ url('/project')}}" class="cs-text_b_line"><span>PROJECTS</span></a>
-              </li>    
+              <li class="menu-item-has-children">
+                <a href="#" class="cs-text_b_line"><span>ABOUT US</span></a>
+                <ul>
+                  <li>
+                    <a href="{{ url('/about')}}" class="cs-text_b_line"><span>Company History</span></a>
+                  </li>                  
+                  @foreach($shownAbouts as $shownAbout)
+                    <li>
+                      <a href="{{ url("about/" . $shownAbout->slug )}}" class="cs-text_b_line"><span>{{ str($shownAbout->title) }}</span></a>
+                    </li>
+                  @endforeach
+                </ul>
+                <span class="cs_munu_dropdown_toggle"></span>
+              </li>                  
+              <li class="menu-item-has-children">
+                <a href="#" class="cs-text_b_line"><span>PROJECTS</span></a>
+                <ul>                
+                  @foreach($shownProjectCategories as $shownProjectCategory)
+                    <li>
+                      <a href="{{ url("project/" . $shownProjectCategory->slug )}}" class="cs-text_b_line"><span>{{ str($shownProjectCategory->title) }}</span></a>
+                    </li>
+                  @endforeach
+                </ul>
+                <span class="cs_munu_dropdown_toggle"></span>
+              </li>       
 
               <li class="menu-item-has-children">
                 <a href="#" class="cs-text_b_line"><span>GALLERY</span></a>

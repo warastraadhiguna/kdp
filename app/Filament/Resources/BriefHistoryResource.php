@@ -25,7 +25,7 @@ class BriefHistoryResource extends Resource
     protected static ?string $model = BriefHistory::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-clock';
-    protected static ?string $navigationGroup = 'Pengaturan Web';
+    protected static ?string $navigationGroup = 'Pengaturan About';
     public static function form(Form $form): Form
     {
         return $form

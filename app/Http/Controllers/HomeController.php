@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Blog;
 use App\Models\GalleryCategory;
 use App\Models\Owner;
 use App\Models\Client;
+use App\Models\ProjectCategory;
 use App\Models\Slider;
 use App\Models\Gallery;
 use App\Models\Message;
@@ -23,7 +25,7 @@ class HomeController extends Controller
             'sliders' => Slider::orderBy('index')->get(),
             'clients' => Client::orderBy('index')->get(),
             'owners'  => Owner::orderBy('index')->get(),
-            'projects' => Project::with('owner')->orderBy('index')->where('index', ">", "0")->limit(4)->get(),
+            'projectCategories' => ProjectCategory::orderBy('index')->where('index', ">", "0")->get(),
             'blogs' => Blog::orderBy('index')->where('index', ">", "0")->limit(3)->get(),
             'teamMembers' => TeamMember::orderBy('index')->where('index', ">", "0")->get(),
             'projectTotal' => Project::count()
@@ -42,7 +44,15 @@ class HomeController extends Controller
         ];
         return view('about.index', $data);
     }
+    public function detailAbout($slug)
+    {
+        $about = About::where('slug', $slug)->where('index', ">", "0")->firstOrFail();
+        $data = [
+            "about" => $about ,
+        ];
 
+        return view('about.detail', $data);
+    }
     public function contact()
     {
         $data = [
@@ -121,6 +131,20 @@ class HomeController extends Controller
         ];
         return view('gallery.index', $data);
     }
+
+
+    public function project($slug)
+    {
+        $projectCategory = ProjectCategory::where('slug', $slug)->where('index', ">", "0")->firstOrFail();
+        $data = [
+            'projectCategory' => $projectCategory,
+            'clients' => Client::orderBy('index')->get(),
+            'projects' => Project::with('owner')->where("project_category_id", $projectCategory->id)->orderBy('index')->where('index', ">", "0")->get(),
+        ];
+
+        return view('project.index', $data);
+    }
+
     public function blog()
     {
         $data = [
@@ -140,15 +164,6 @@ class HomeController extends Controller
         return view('blog.detail', $data);
     }
 
-    public function project()
-    {
-        $data = [
-            'clients' => Client::orderBy('index')->get(),
-            'projects' => Project::with('owner')->orderBy('index')->where('index', ">", "0")->get(),
-        ];
-
-        return view('project.index', $data);
-    }
 
     public function teamMember($slug)
     {

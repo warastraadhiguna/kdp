@@ -1,5 +1,17 @@
   <section class="projects-list">
     <div class="container lg-gutter-control">
+              <div class="max-width-1120 m-auto">
+                <h4>
+                    {{ $projectCategory->title }}
+                </h4>
+                <div class="cs-height-30"></div>                
+                <p  style="white-space: pre-line;text-align:justify; font-weight: bold;">{{ $projectCategory->introduction }}
+                </p>
+
+                <div class="cs-height-40"></div>
+
+              <div class="cs-container-border"></div>
+            </div>         
       <div class="row">
         @foreach($projects as $project)
                   <div class="col-xl-6 col-md-12">

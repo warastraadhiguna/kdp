@@ -10,6 +10,7 @@ class Project extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'project_category_id',
         'name',
         'contract_number',
         'location',
@@ -51,5 +52,10 @@ class Project extends Model
     public function owner()
     {
         return $this->belongsTo(Owner::class);
+    }
+
+    public function projectCategory()
+    {
+        return $this->belongsTo(ProjectCategory::class);
     }
 }
