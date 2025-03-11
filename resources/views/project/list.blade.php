@@ -30,6 +30,7 @@
                 data-scope="{{ $project->scope }}"
                 data-location="{{ $project->location }}"
                 data-owner="{{ $project->owner->name }}"
+                data-client="{{ $project->client->name }}"                
                 data-schedule="{{ $project->schedule }}"
                 data-image="{{ asset('storage/' . $project->image) }}">
                 <h5>{{ $project->name }}</h5>
@@ -40,6 +41,7 @@
                 data-scope="{{ $project->scope }}"
                 data-location="{{ $project->location }}"
                 data-owner="{{ $project->owner->name }}"
+                data-client="{{ $project->client->name }}"                           
                 data-schedule="{{ $project->schedule }}"
                 data-image="{{ asset('storage/' . $project->image) }}"  
                 class="cs-text_b_line">
@@ -78,6 +80,10 @@
                     <td id="customModalOwner"></td>
                 </tr>
                 <tr>
+                    <td><strong>Client:</strong></td>
+                    <td id="customModalClient"></td>
+                </tr>                
+                <tr>
                     <td><strong>Schedule:</strong></td>
                     <td id="customModalSchedule"></td>
                 </tr>
@@ -104,6 +110,7 @@ document.querySelectorAll(".open-modal").forEach(el => {
         let scope = this.getAttribute("data-scope");
         let location = this.getAttribute("data-location");
         let owner = this.getAttribute("data-owner");
+        let client = this.getAttribute("data-client");        
         let schedule = this.getAttribute("data-schedule");
         let image = this.getAttribute("data-image");
 
@@ -112,6 +119,7 @@ document.querySelectorAll(".open-modal").forEach(el => {
         document.getElementById("customModalScope").innerText = scope;
         document.getElementById("customModalLocation").innerText = location;
         document.getElementById("customModalOwner").innerText = owner;
+        document.getElementById("customModalClient").innerText = client;        
         document.getElementById("customModalSchedule").innerText = schedule;
         document.getElementById("customModalImage").src = image;
 

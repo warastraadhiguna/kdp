@@ -20,6 +20,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Filament\Resources\ProjectResource\Pages;
+use App\Models\Client;
 use Intervention\Image\Drivers\Gd\Encoders\JpegEncoder;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
@@ -47,6 +48,12 @@ class ProjectResource extends Resource
                     ->label('Owner')
                     ->relationship('owner', 'name')
                     ->options(fn () => Owner::where('index', '>', '0')->pluck('name', 'id'))
+                    ->searchable()
+                    ->required(),
+                Select::make('client_id')
+                    ->label('Client')
+                    ->relationship('client', 'name')
+                    ->options(fn () => Client::where('index', '>', '0')->pluck('name', 'id'))
                     ->searchable()
                     ->required(),
                 TextInput::make('schedule')->label('Schedule')->required(),
@@ -121,6 +128,7 @@ class ProjectResource extends Resource
                 TextColumn::make('name')->label('Nama')->searchable(['name']),
                 TextColumn::make('location')->label('Lokasi'),
                 TextColumn::make('owner.name')->label('Owner'),
+                TextColumn::make('client.name')->label('Client'),
                 TextColumn::make('index')->label('Indeks'),
                 ImageColumn::make('image')
                     ->label('Gambar')

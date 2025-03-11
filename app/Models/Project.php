@@ -15,6 +15,7 @@ class Project extends Model
         'scope',
         'location',
         'owner_id',
+        'client_id',
         'schedule',
         'image',
         'index',
@@ -52,6 +53,11 @@ class Project extends Model
     public function owner()
     {
         return $this->belongsTo(Owner::class);
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
 
     public function projectCategory()

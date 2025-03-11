@@ -139,7 +139,7 @@ class HomeController extends Controller
         $data = [
             'projectCategory' => $projectCategory,
             'clients' => Client::orderBy('index')->get(),
-            'projects' => Project::with('owner')->where("project_category_id", $projectCategory->id)->orderBy('index')->where('index', ">", "0")->get(),
+            'projects' => Project::with('owner', 'client')->where("project_category_id", $projectCategory->id)->orderBy('index')->where('index', ">", "0")->get(),
         ];
 
         return view('project.index', $data);
