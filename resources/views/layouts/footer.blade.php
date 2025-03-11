@@ -60,8 +60,8 @@
                   <ul>
                     <li><i class="flaticon-right-arrow themecolor"></i><a href="{{ url(path: '/about')}}"
                         class="cs-text_b_line"><span>ABOUT US</span></a></li>
-                    <li><i class="flaticon-right-arrow themecolor"></i><a href="{{ url('/gallery')}}"
-                        class="cs-text_b_line"><span>GALLERY</span></a></li>
+                    {{-- <li><i class="flaticon-right-arrow themecolor"></i><a href="{{ url('/gallery')}}"
+                        class="cs-text_b_line"><span>GALLERY</span></a></li> --}}
                     <li><i class="flaticon-right-arrow themecolor"></i><a href="{{ url('/contact')}}"
                         class="cs-text_b_line"><span>CONTACT US</span></a></li>
                   </ul>
@@ -76,8 +76,8 @@
                 </div>
                 <div class="cs-constr-footer-menu">
                   <ul>
-                    <li><i class="flaticon-right-arrow themecolor"></i><a href="{{ url('/project')}}"
-                        class="cs-text_b_line"><span>PROJECTS</span></a></li>
+                    {{-- <li><i class="flaticon-right-arrow themecolor"></i><a href="{{ url('/project')}}"
+                        class="cs-text_b_line"><span>PROJECTS</span></a></li> --}}
                     <li><i class="flaticon-right-arrow themecolor"></i><a href="{{ url('/blog')}}"
                         class="cs-text_b_line"><span>NEWS</span></a></li>
                   </ul>
