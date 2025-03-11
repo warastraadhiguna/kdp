@@ -107,7 +107,7 @@ class CompanyResource extends Resource
                                         ->cover(571, 336)
                                         ->encode(new JpegEncoder(quality: 80));
                                     Storage::disk('public')->put($publicPath, (string) $image);
-                                    $set('image', [$publicPath]);
+                                    $set('video_thumbnail_image', [$publicPath]);
                                 } catch (\Exception $e) {
                                     dd("Error memproses gambar: " . $e->getMessage());
                                 }
@@ -151,7 +151,7 @@ class CompanyResource extends Resource
                                         ->cover(16, 16)
                                         ->encode(new JpegEncoder(quality: 80));
                                     Storage::disk('public')->put($publicPath, (string) $image);
-                                    $set('image', [$publicPath]);
+                                    $set('icon', [$publicPath]);
                                 } catch (\Exception $e) {
                                     dd("Error memproses gambar: " . $e->getMessage());
                                 }
@@ -239,7 +239,7 @@ class CompanyResource extends Resource
                                         ->cover(1920, 465)
                                         ->encode(new JpegEncoder(quality: 80));
                                     Storage::disk('public')->put($publicPath, (string) $image);
-                                    $set('image', [$publicPath]);
+                                    $set('breadcrumb_image', [$publicPath]);
                                 } catch (\Exception $e) {
                                     dd("Error memproses gambar: " . $e->getMessage());
                                 }
@@ -283,7 +283,7 @@ class CompanyResource extends Resource
                                     ->cover(1920, 751)
                                     ->encode(new JpegEncoder(quality: 80));
                                 Storage::disk('public')->put($publicPath, (string) $image);
-                                $set('image', [$publicPath]);
+                                $set('parallax_image', [$publicPath]);
                             } catch (\Exception $e) {
                                 dd("Error memproses gambar: " . $e->getMessage());
                             }

@@ -7,6 +7,7 @@ use App\Models\About;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use FilamentTiptapEditor\TiptapEditor;
 use Intervention\Image\ImageManager;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -28,10 +29,11 @@ class AboutResource extends Resource
                     ->label('Judul')
                     ->required(),
                 TextInput::make('index')->label('Indeks (0 untuk tidak tampil)')->minValue(0)->required(),
-                RichEditor::make('content')
+                TiptapEditor::make('content')
+                    ->profile('default')
                     ->label('Konten')
                     ->columnSpan('full')
-                    ->required(),
+                    ->required()
             ]);
     }
 

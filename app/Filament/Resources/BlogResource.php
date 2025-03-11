@@ -7,6 +7,7 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManager;
 use Filament\Forms\Components\Textarea;
@@ -107,10 +108,11 @@ class BlogResource extends Resource
                             dd("Error memproses gambar: " . $e->getMessage());
                         }
                     }),
-                RichEditor::make('content')
+                TiptapEditor::make('content')
+                    ->profile('default')
                     ->label('Konten')
                     ->columnSpan('full')
-                    ->required(),
+                    ->required()
 
             ]);
     }
@@ -135,7 +137,8 @@ class BlogResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('index');
     }
 
     public static function getRelations(): array
