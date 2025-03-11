@@ -14,7 +14,7 @@
           <div class="swiper service-slider">
             <div class="swiper-wrapper">
               @foreach($projectCategories as $projectCategory)
-              @if($projectCategory->projects)
+              @if($projectCategory->projects && sizeOf($projectCategory->projects)>0)
                 
               <div class="swiper-slide">
                 <div class="service-item"  data-aos="fade-up" data-aos-duration="500">
