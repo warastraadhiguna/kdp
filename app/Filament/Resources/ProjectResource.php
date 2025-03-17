@@ -126,8 +126,6 @@ class ProjectResource extends Resource
                 TextColumn::make('projectCategory.title')->label('Kategori'),
                 TextColumn::make('name')->label('Nama')->searchable(['name']),
                 TextColumn::make('location')->label('Lokasi'),
-                TextColumn::make('owner.name')->label('Owner'),
-                TextColumn::make('client.name')->label('Client'),
                 TextColumn::make('index')->label('Indeks'),
                 ImageColumn::make('image')
                     ->label('Gambar')
