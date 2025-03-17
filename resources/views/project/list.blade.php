@@ -29,8 +29,7 @@
                 data-name="{{ $project->name }}"
                 data-scope="{{ $project->scope }}"
                 data-location="{{ $project->location }}"
-                data-owner="{{ $project->owner->name }}"
-                data-client="{{ $project->client->name }}"                
+                data-owner="{{ $project->owner->name }}"             
                 data-schedule="{{ $project->schedule }}"
                 data-image="{{ asset('storage/' . $project->image) }}">
                 <h5>{{ $project->name }}</h5>
@@ -40,8 +39,7 @@
                 data-name="{{ $project->name }}"
                 data-scope="{{ $project->scope }}"
                 data-location="{{ $project->location }}"
-                data-owner="{{ $project->owner? $project->owner->name : '' }}"
-                data-client="{{ $project->client->name }}"                           
+                data-owner="{{ $project->owner? $project->owner->name : '' }}"                  
                 data-schedule="{{ $project->schedule }}"
                 data-image="{{ asset('storage/' . $project->image) }}"  
                 class="cs-text_b_line">
