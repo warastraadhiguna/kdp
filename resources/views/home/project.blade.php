@@ -27,7 +27,7 @@
                     <a href="{{ url("project/" . $projectCategory->slug )}}" class="the-srv-title cs-text-style-h6">{{ $projectCategory->title }}</a>
                       <h4 class="the-plus">+</h4>
                       <div class="srv-the-hover">
-                        <p>{{ Illuminate\Support\Str::limit($projectCategory->introduction, 200, '...') }}</p>
+                        {{-- <p>{{ Illuminate\Support\Str::limit($projectCategory->introduction, 200, '...') }}</p> --}}
                           <a href="{{ url("project/" . $projectCategory->slug )}}" class="cs-primary-btn cs-color-black cs_white_color-bg cs-height-50 cs-width-160"><span>More Details</span></a>
                       </div>
                   </div>
