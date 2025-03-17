@@ -23,7 +23,7 @@ class HomeController extends Controller
     {
         $data = [
             'sliders' => Slider::orderBy('index')->get(),
-            'clients' => Client::orderBy('index')->get(),
+            // 'clients' => Client::orderBy('index')->get(),
             'owners'  => Owner::orderBy('index')->get(),
             'projectCategories' => ProjectCategory::orderBy('index')->where('index', ">", "0")->get(),
             'blogs' => Blog::orderBy('index')->where('index', ">", "0")->limit(3)->get(),
@@ -138,8 +138,8 @@ class HomeController extends Controller
         $projectCategory = ProjectCategory::where('slug', $slug)->where('index', ">", "0")->firstOrFail();
         $data = [
             'projectCategory' => $projectCategory,
-            'clients' => Client::orderBy('index')->get(),
-            'projects' => Project::with('owner', 'client')->where("project_category_id", $projectCategory->id)->orderBy('index')->where('index', ">", "0")->get(),
+            'owners'  => Owner::orderBy('index')->get(),
+            'projects' => Project::with('owner')->where("project_category_id", $projectCategory->id)->orderBy('index')->where('index', ">", "0")->get(),
         ];
 
         return view('project.index', $data);

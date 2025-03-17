@@ -1,8 +1,8 @@
 <!-- Start Service Section -->
 <section>
 <div class="cs-heading-with-animation text-center max-width-800 m-auto d-flex">
-    <h2 class="cs-heading">Owners</h2>
-    <span class="cs-text-style-h1 cs-animated-text">OWNERS</span>
+    <h2 class="cs-heading">Clients</h2>
+    <span class="cs-text-style-h1 cs-animated-text">CLIENTS</span>
 </div>
 <div class="cs-height-50"></div>
 
@@ -22,7 +22,7 @@
                         {{-- <a href="service-details.html" class="the-srv-title cs-text-style-h6">{{ $owner->name }}</a> --}}
                         {{-- <h4 class="the-plus">+ </h4> --}}
                         <div class="srv-the-hover">
-                            <p>{{ $owner->note }}</p>
+                            <p>{{ $owner->name }}</p>
                             {{-- <a href="service-details.html" class="cs-primary-btn cs-color-black cs_white_color-bg cs-height-50 cs-width-160"><span>More Details</span></a> --}}
                         </div>
                     </div>

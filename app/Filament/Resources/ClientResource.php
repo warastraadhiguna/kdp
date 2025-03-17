@@ -139,4 +139,9 @@ class ClientResource extends Resource
     {
         return Auth::user()?->role  === 'admin'; // ✅ Hanya admin yang bisa melihat
     }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false; // ❌ Tidak akan muncul di sidebar
+    }
 }

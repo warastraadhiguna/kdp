@@ -32,8 +32,8 @@ class OwnerResource extends Resource
             ->schema([
                 TextInput::make('name')->label('Nama')->required(),
                 TextInput::make('index')->label('Indeks')->minValue(0)->required(),
-                Textarea::make('note')
-                    ->label('Keterangan'),
+                // Textarea::make('note')
+                //     ->label('Keterangan'),
                 FileUpload::make('image')
                     ->label('Logo (430 x 401)')
                     ->directory('images/owners')
@@ -101,7 +101,7 @@ class OwnerResource extends Resource
             ->recordUrl(fn ($record) => null)
             ->columns([
                 TextColumn::make('name')->label('Nama')->searchable(['name']),
-                TextColumn::make('note')->label('Keterangan')->wrap(),
+                // TextColumn::make('note')->label('Keterangan')->wrap(),
                 TextColumn::make('index')->label('Indeks'),
                 ImageColumn::make('image')
                     ->label('Logo')
@@ -139,17 +139,17 @@ class OwnerResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return 'Owner';
+        return 'Client';
     }
 
     public static function getModelLabel(): string
     {
-        return __('Owner'); // Label singular
+        return __('Client'); // Label singular
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Data Owner'); // Label plural
+        return __('Data Client'); // Label plural
     }
 
     public static function canViewAny(): bool

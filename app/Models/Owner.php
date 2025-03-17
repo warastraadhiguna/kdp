@@ -12,7 +12,7 @@ class Owner extends Model
 
     protected $fillable = [
         'name',
-        'note',
+        // 'note',
         'image',
         'index',
     ];

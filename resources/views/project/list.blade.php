@@ -78,11 +78,7 @@
                 <tr id='ownerRow'>
                     <td><strong>Owner:</strong></td>
                     <td id="customModalOwner"></td>
-                </tr>
-                <tr>
-                    <td><strong>Client:</strong></td>
-                    <td id="customModalClient"></td>
-                </tr>                
+                </tr>         
                 <tr>
                     <td><strong>Schedule:</strong></td>
                     <td id="customModalSchedule"></td>
@@ -109,8 +105,7 @@ document.querySelectorAll(".open-modal").forEach(el => {
         let name = this.getAttribute("data-name");
         let scope = this.getAttribute("data-scope");
         let location = this.getAttribute("data-location");
-        let owner = this.getAttribute("data-owner");
-        let client = this.getAttribute("data-client");        
+        let owner = this.getAttribute("data-owner");      
         let schedule = this.getAttribute("data-schedule");
         let image = this.getAttribute("data-image");
 
@@ -119,12 +114,7 @@ document.querySelectorAll(".open-modal").forEach(el => {
         document.getElementById("customModalScope").innerText = scope;
         document.getElementById("customModalLocation").innerText = location;
         document.getElementById("customModalOwner").innerText = owner;
-        if(owner === '')
-          document.getElementById("ownerRow").style.display = "none";
-        else
-          document.getElementById("ownerRow").style.display = "block";
-
-        document.getElementById("customModalClient").innerText = client;        
+   
         document.getElementById("customModalSchedule").innerText = schedule;
         document.getElementById("customModalImage").src = image;
 

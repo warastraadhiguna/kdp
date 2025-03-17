@@ -49,12 +49,12 @@ class ProjectResource extends Resource
                     ->relationship('owner', 'name')
                     ->options(fn () => Owner::where('index', '>', '0')->pluck('name', 'id'))
                     ->searchable(),
-                Select::make('client_id')
-                    ->label('Client')
-                    ->relationship('client', 'name')
-                    ->options(fn () => Client::where('index', '>', '0')->pluck('name', 'id'))
-                    ->searchable()
-                    ->required(),
+                // Select::make('client_id')
+                //     ->label('Client')
+                //     ->relationship('client', 'name')
+                //     ->options(fn () => Client::where('index', '>', '0')->pluck('name', 'id'))
+                //     ->searchable()
+                //     ->required(),
                 TextInput::make('schedule')->label('Schedule')->required(),
                 TextInput::make('index')->label('Indeks')->minValue(0)->required(),
                 FileUpload::make('image')
@@ -123,9 +123,10 @@ class ProjectResource extends Resource
         return $table
             ->recordUrl(fn ($record) => null)
             ->columns([
-                TextColumn::make('projectCategory.title')->label('Kategori'),
+                TextColumn::make('projectCategory.title')->label('Kategori')->sortable(['project_categories.title']),
                 TextColumn::make('name')->label('Nama')->searchable(['name']),
                 TextColumn::make('location')->label('Lokasi'),
+                TextColumn::make('owner.name')->label('Owner'),
                 TextColumn::make('index')->label('Indeks'),
                 ImageColumn::make('image')
                     ->label('Gambar')
@@ -142,7 +143,8 @@ class ProjectResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort("projectCategory.title");
     }
 
     public static function getRelations(): array

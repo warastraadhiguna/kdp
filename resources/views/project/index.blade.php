@@ -41,7 +41,7 @@
   <div class="cs-section-height"></div>
   <!-- Section to Section Gap -->
 
-  @include('home.client');    
+  @include('home.owner');    
 <div class="cs-section-height"></div>
   {{-- @include('layouts.tagline');       --}}
 @endsection
