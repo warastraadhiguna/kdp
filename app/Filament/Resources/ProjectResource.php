@@ -48,8 +48,7 @@ class ProjectResource extends Resource
                     ->label('Owner')
                     ->relationship('owner', 'name')
                     ->options(fn () => Owner::where('index', '>', '0')->pluck('name', 'id'))
-                    ->searchable()
-                    ->required(),
+                    ->searchable(),
                 Select::make('client_id')
                     ->label('Client')
                     ->relationship('client', 'name')

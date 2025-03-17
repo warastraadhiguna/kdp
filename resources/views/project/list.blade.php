@@ -40,7 +40,7 @@
                 data-name="{{ $project->name }}"
                 data-scope="{{ $project->scope }}"
                 data-location="{{ $project->location }}"
-                data-owner="{{ $project->owner->name }}"
+                data-owner="{{ $project->owner? $project->owner->name : '' }}"
                 data-client="{{ $project->client->name }}"                           
                 data-schedule="{{ $project->schedule }}"
                 data-image="{{ asset('storage/' . $project->image) }}"  
@@ -75,7 +75,7 @@
                     <td><strong>Location:</strong></td>
                     <td id="customModalLocation"></td>
                 </tr>
-                <tr>
+                <tr id='ownerRow'>
                     <td><strong>Owner:</strong></td>
                     <td id="customModalOwner"></td>
                 </tr>
@@ -119,6 +119,8 @@ document.querySelectorAll(".open-modal").forEach(el => {
         document.getElementById("customModalScope").innerText = scope;
         document.getElementById("customModalLocation").innerText = location;
         document.getElementById("customModalOwner").innerText = owner;
+        if(owner === '')
+          document.getElementById("ownerRow").style.display = "none";
         document.getElementById("customModalClient").innerText = client;        
         document.getElementById("customModalSchedule").innerText = schedule;
         document.getElementById("customModalImage").src = image;
