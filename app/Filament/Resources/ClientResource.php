@@ -66,7 +66,7 @@ class ClientResource extends Resource
                         $manager = new ImageManager(new Driver());
                         try {
                             $image = $manager->read($realPath)
-                                ->cover(206, 27)
+                                ->cover(301, 122)
                                 ->encode(new JpegEncoder(quality: 80));
                             Storage::disk('public')->put($publicPath, (string) $image);
                             $set('image', [$publicPath]);
