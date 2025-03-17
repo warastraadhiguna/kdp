@@ -39,7 +39,6 @@ class ProjectCategoryResource extends Resource
             ->recordUrl(fn ($record) => null)
             ->columns([
                 TextColumn::make('title')->label('Judul')->searchable(['title']),
-                TextColumn::make('introduction')->label('Pendahuluan')->wrap(),
                 TextColumn::make('index')->label('Indeks'),
             ])
             ->filters([
