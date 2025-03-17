@@ -121,6 +121,9 @@ document.querySelectorAll(".open-modal").forEach(el => {
         document.getElementById("customModalOwner").innerText = owner;
         if(owner === '')
           document.getElementById("ownerRow").style.display = "none";
+        else
+          document.getElementById("ownerRow").style.display = "block";
+
         document.getElementById("customModalClient").innerText = client;        
         document.getElementById("customModalSchedule").innerText = schedule;
         document.getElementById("customModalImage").src = image;
