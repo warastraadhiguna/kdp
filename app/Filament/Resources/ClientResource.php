@@ -32,7 +32,7 @@ class ClientResource extends Resource
                 TextInput::make('name')->label('Nama')->required(),
                 TextInput::make('index')->label('Indeks')->minValue(0)->required(),
                 FileUpload::make('image')
-                    ->label('Logo (206 x 27)')
+                    ->label('Logo (301 x 122)')
                     // ->directory('images/clients')
                     ->image() // Validasi gambar
                     ->required()
