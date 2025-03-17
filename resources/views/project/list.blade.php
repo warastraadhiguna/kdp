@@ -5,9 +5,9 @@
                     {{ $projectCategory->title }}
                 </h4>
                 <div class="cs-height-30"></div>                
-                <p  style="white-space: pre-line;text-align:justify; font-weight: bold;">{{ $projectCategory->introduction }}
-                </p>
-
+                {{-- <p  style="white-space: pre-line;text-align:justify; font-weight: bold;">{{ $projectCategory->introduction }}
+                </p> --}}
+                 {!! $projectCategory->introduction !!}
                 <div class="cs-height-40"></div>
 
               <div class="cs-container-border"></div>

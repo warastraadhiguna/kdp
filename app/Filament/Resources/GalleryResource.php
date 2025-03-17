@@ -47,7 +47,7 @@ class GalleryResource extends Resource
         return $table
             ->recordUrl(fn ($record) => null)
             ->columns([
-                TextColumn::make('galleryCategory.title')->label('Kategori'),
+                TextColumn::make('galleryCategory.title')->label('Kategori')->sortable(['gallery_categories.title']),
                 TextColumn::make('title')->label('Judul')->searchable(['title']),
                 ImageColumn::make('image')
                     ->label('Gambar')
@@ -64,7 +64,8 @@ class GalleryResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort("galleryCategory.title");
     }
 
     public static function getRelations(): array

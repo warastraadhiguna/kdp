@@ -7,6 +7,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\ProjectCategory;
 use Filament\Resources\Resource;
+use FilamentTiptapEditor\TiptapEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -23,8 +24,10 @@ class ProjectCategoryResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title')->label('Judul')->required(),
-                Textarea::make('introduction')
+                TiptapEditor::make('introduction')
+                    ->profile('default')
                     ->label('Pendahuluan (ditampilkan)')
+                    ->columnSpan('full')
                     ->required(),
                 TextInput::make('index')->label('Indeks (0 untuk tidak tampil)')->minValue(0)->required(),
             ]);
@@ -36,7 +39,7 @@ class ProjectCategoryResource extends Resource
             ->recordUrl(fn ($record) => null)
             ->columns([
                 TextColumn::make('title')->label('Judul')->searchable(['title']),
-                TextColumn::make('introduction')->label('Pendauluan')->wrap(),
+                TextColumn::make('introduction')->label('Pendahuluan')->wrap(),
                 TextColumn::make('index')->label('Indeks'),
             ])
             ->filters([

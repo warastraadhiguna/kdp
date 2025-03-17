@@ -36,13 +36,15 @@ class TeamMemberResource extends Resource
                     ->label('Jabatan')
                     ->required(),
                 Textarea::make('description')
-                    ->label('Deskripsi'),
+                    ->label('Deskripsi')
+                    ->required(),
                 TextInput::make('email')
                     ->label('Email')
                     ->email()
                     ->required(),
                 Textarea::make('quote')
-                    ->label('Kutipan'),
+                    ->label('Kutipan')
+                    ->required(),
                 TextInput::make('instagram')
                     ->label('Instagram'),
                 TextInput::make('linkedin')

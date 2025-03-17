@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\RichEditor;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Filament\Resources\BlogResource\Pages;
 use Intervention\Image\Drivers\Gd\Encoders\JpegEncoder;
@@ -161,17 +160,17 @@ class BlogResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return 'Blog';
+        return 'News';
     }
 
     public static function getModelLabel(): string
     {
-        return __('Blog'); // Label singular
+        return __('News'); // Label singular
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Data Blog'); // Label plural
+        return __('Data News'); // Label plural
     }
 
     public static function canViewAny(): bool
