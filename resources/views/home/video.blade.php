@@ -32,13 +32,22 @@
               </div>
               <div class="cs-height-50"></div>
               <div class="list-feature" data-aos="fade-up" data-aos-duration="600">
-                  @foreach($shownGalleryCategories as $key => $shownGalleryCategory)
-                      <h6><a href="{{ url("gallery/" . $shownGalleryCategory->slug )}}" class="cs-text_b_line"><span>{{ str($shownGalleryCategory->title) }}</span></a></h6>
-                      
-                      @if($key < sizeof($shownGalleryCategories) - 1)                        
-                      <div class="cs-list-border"></div>
-                      @endif
-                  @endforeach
+                @if($company->about_title1)
+                  <h6><a href="{{ $company->about_link1 }}" class="cs-text_b_line"><span>{{ str($company->about_title1) }}</span></a></h6>
+                  <div class="cs-list-border"></div>
+                @endif
+                @if($company->about_title2)
+                <h6><a href="{{ $company->about_link2 }}" class="cs-text_b_line"><span>{{ str($company->about_title2) }}</span></a></h6>
+                <div class="cs-list-border"></div>
+                @endif
+                @if($company->about_title3)
+                <h6><a href="{{ $company->about_link3 }}" class="cs-text_b_line"><span>{{ str($company->about_title3) }}</span></a></h6>
+                <div class="cs-list-border"></div>
+                @endif
+                @if($company->about_title4)
+                <h6><a href="{{ $company->about_link4 }}" class="cs-text_b_line"><span>{{ str($company->about_title4) }}</span></a></h6>
+                <div class="cs-list-border"></div>   
+                @endif
               </div>
               <div class="cs-height-140"></div>
             </div>

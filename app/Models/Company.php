@@ -47,7 +47,9 @@ class Company extends Model
         'show_parallax_info', 
         'parallax_text1',
         'parallax_text2',
-        'show_counter_info'
+        'show_counter_info',
+        'about_title1','about_title2','about_title3','about_title4',
+        'about_link1','about_link2','about_link3','about_link4'        
     ];
     protected $casts = [
         'establishment_date' => 'date', // Pastikan ini ada
