@@ -31,7 +31,10 @@ class AboutHomeResource extends Resource
                 TextInput::make('about_link3')->label('Link 3'),     
 
                 TextInput::make('about_title4')->label('Judul 4'),                      
-                TextInput::make('about_link4')->label('Link 4'),     
+                TextInput::make('about_link4')->label('Link 4'),   
+                
+                TextInput::make('about_title5')->label('Judul 5'),                      
+                TextInput::make('about_link5')->label('Link 5'),                  
             ]);
     }
 

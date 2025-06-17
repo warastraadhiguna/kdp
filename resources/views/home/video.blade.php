@@ -48,6 +48,10 @@
                 <h6><a href="{{ $company->about_link4 }}" class="cs-text_b_line"><span>{{ str($company->about_title4) }}</span></a></h6>
                 <div class="cs-list-border"></div>   
                 @endif
+                @if($company->about_title5)
+                <h6><a href="{{ $company->about_link5 }}" class="cs-text_b_line"><span>{{ str($company->about_title5) }}</span></a></h6>
+                <div class="cs-list-border"></div>   
+                @endif                
               </div>
               <div class="cs-height-140"></div>
             </div>
