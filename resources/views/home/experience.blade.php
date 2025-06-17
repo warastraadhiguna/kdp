@@ -9,7 +9,8 @@
         </div>
       </div>
       <div class="content-for-parallax">
-        <div class="ae-content theme-dark">
+        @if($company->show_parallax_info === 'y')
+        <div class="ae-content theme-dark transparent-bg">
           <div class="cs-experience" data-aos="fade-right" data-aos-duration="400">
             {{-- <img src="{{ asset('assets/img/about/25.svg')}}" alt=""> --}}
             <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
@@ -19,11 +20,14 @@
             </svg>
 
             <div class="cs-height-15"></div>
-            <h4 class="cs-uppercase">Years of <br> Experience</h4>
+            {{-- <h4 class="cs-uppercase">Years of <br> Experience</h4> --}}
+            <h4 class="cs-uppercase">{{ $company->parallax_text1 }}</h4>            
           </div>
           <div class="aec-line"></div>
-          <h3 data-aos="fade-left" data-aos-duration="400" class="cs-uppercase">We are Leading <br> Company</h3>
+          {{-- <h3 data-aos="fade-left" data-aos-duration="400" class="cs-uppercase">We are Leading <br> Company</h3> --}}
+          <h3 data-aos="fade-left" data-aos-duration="400" class="cs-uppercase">{{ $company->parallax_text2 }}</h3>          
         </div>
+        @endif
       </div>
     </div>
   </section>

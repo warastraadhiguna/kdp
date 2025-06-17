@@ -20,7 +20,6 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Filament\Resources\ProjectResource\Pages;
-use App\Models\Client;
 use Intervention\Image\Drivers\Gd\Encoders\JpegEncoder;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 

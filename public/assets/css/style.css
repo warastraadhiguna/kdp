@@ -584,22 +584,117 @@ textarea {
 }
 
 .close-btn-modal {
-    display: block;
-    width: 100%;
+    /* display: block; */
+    /* width: 100%; */
     background: #ff5f5f;
     color: white;
     padding: 10px;
     text-align: center;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    /* font-size: 16px; */
     cursor: pointer;
     margin-top: 10px;
     transition: background 0.3s ease;
+
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: inline-block; 
+    width: 40px;                /* lebar area klik */
+    height: 40px;               /* tinggi area klik */
+    line-height: 40px;          /* vertikal center teks × */
+
+    font-size: 24px;            /* sesuaikan besar “×” */    
+         
+    z-index: 1001;
 }
+
+
 
 .close-btn-modal:hover {
     background: #ff2f2f;
+}
+
+/* START-MODAL OVERLAY: menutupi seluruh halaman */
+.start-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;       /* lebar 100% viewport */
+  height: 100vh;      /* tinggi 100% viewport */
+  background: rgba(0, 0, 0, 0.6);  /* latar semi-transparan */
+  display: flex;      
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;     /* pastikan di atas elemen lain */
+}
+
+/* isi kotak modal di dalam start-modal */
+.start-modal .modal-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 90%;     /* lebar maksimal 90% layar */
+  max-height: 90%;    /* tinggi maksimal 90% layar */
+  overflow-y: auto;   /* scroll jika isinya terlalu panjang */
+  position: relative; /* agar tombol close bisa di-posisikan */
+}
+
+/* tombol close di dalam start-modal */
+.start-modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+/* styling untuk gambar full-width di modal */
+.modal-image-full {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.start-modal .modal-box {
+  background: transparent !important;
+  box-shadow: none;          /* hilangkan bayangan kalau ada */
+}
+
+.start-modal .close-btn {
+  /* Tetap posisi absolute */
+  position: absolute;
+  top: 10px;
+  right: 15px;
+
+  /* Buat ukuran area klik lebih besar */
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+
+  /* Warna dan background agar selalu kelihatan */
+  color: #fff;                               /* putih kontras di overlay gelap */
+  background: rgba(0, 0, 0, 0.5);            /* lingkaran gelap semi */
+  border-radius: 50%;                        /* bulat */
+  font-size: 24px;                           /* ukuran simbol */
+  font-weight: bold;
+
+  /* Pastikan di layer atas */
+  z-index: 10001;
+
+  /* Cursor dan user‐select */
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Hover effect (opsional) */
+.start-modal .close-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 /* Responsive */
@@ -2586,6 +2681,69 @@ footer P {
     font-size: 30px;
     color: #666;
     animation: swipeHint 1.5s infinite alternate;
+}
+
+/* navigation button swipper */
+.services-wrapper {
+  position: relative;
+}
+
+.constr-nvigate {
+  background: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+  pointer-events: all;
+  transition: 0.3s;
+}
+
+.constr-nvigate:hover {
+  background: #000;
+  color: #fff;
+}
+ 
+
+/* team member buatan sendiri */
+.team-card .card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 16px;
+}
+
+.team-card .card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.team-card .card-img-top {
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  border-radius: 0;
+}
+
+.team-card .card:hover .card-img-top {
+  transform: scale(1.08);
+}
+
+.team-card .social-icons a {
+  margin: 0 6px;
+  color: #333;
+  font-size: 18px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.team-card .social-icons a:hover {
+  color: #007bff;
+  transform: scale(1.2);
+}
+
+/* experience buatan sendiri */
+.ae-content.transparent-bg {
+  background-color: rgba(224, 65, 44, 0.3) !important;
+  backdrop-filter: blur(2px); /* opsional */
 }
 
 @keyframes swipeHint {

@@ -1,4 +1,8 @@
-  <section class="projects-list">
+<?php 
+  $aoses = ['flip-left','fade-down-left','fade-down','fade-up-right','flip-down','zoom-in-down'];
+  $randomNumber = rand(0, 5);
+?>
+<section class="projects-list">
     <div class="container lg-gutter-control">
               <div class="max-width-1120 m-auto">
                 <h4>
@@ -7,7 +11,7 @@
                 <div class="cs-height-30"></div>                
                 {{-- <p  style="white-space: pre-line;text-align:justify; font-weight: bold;">{{ $projectCategory->introduction }}
                 </p> --}}
-                 {!! $projectCategory->introduction !!}
+                {!! $projectCategory->introduction !!}
                 <div class="cs-height-40"></div>
 
               <div class="cs-container-border"></div>
@@ -15,7 +19,7 @@
       <div class="row">
         @foreach($projects as $project)
                   <div class="col-xl-6 col-md-12">
-          <div class="project-item" data-aos="fade-up" data-aos-duration="300">
+          <div class="project-item" data-aos="{{ $aoses[$randomNumber] }}" data-aos-duration="1000">
             <div class="project-item-in">
               <a href="#">
                 <img src="{{ asset('storage/' . $project->image) }}" alt="">
@@ -125,10 +129,10 @@ document.querySelectorAll(".open-modal").forEach(el => {
 document.querySelector(".close-btn").addEventListener("click", function() {
     document.getElementById("customModal").style.display = "none";
 });
+// document.querySelector(".close-btn-modal").addEventListener("click", function() {
+//     document.getElementById("customModal").style.display = "none";
+// });
 
-document.querySelector(".close-btn-modal").addEventListener("click", function() {
-    document.getElementById("customModal").style.display = "none";
-});
 
 </script>
 

@@ -1,4 +1,8 @@
-  <section>
+<?php 
+  $aoses = ['flip-left','fade-down-left','fade-down','fade-up-right','flip-down','zoom-in-down'];
+  $randomNumber = rand(0, 5);
+?>
+<section>
     <div class="cs-project-wrap themecolor-bg-primary">
       <div class="container-fluid">
         <div class="cs-section-height"></div>
@@ -11,16 +15,16 @@
       </div>
       <div class="services-wrapper">
         <div class="container">
-          <div class="swiper service-slider">
+          <div class="swiper service-slider-project">
             <div class="swiper-wrapper">
               @foreach($projectCategories as $projectCategory)
               @if($projectCategory->projects && sizeOf($projectCategory->projects)>0)
                 
               <div class="swiper-slide">
-                <div class="service-item"  data-aos="fade-up" data-aos-duration="500">
+                <div class="service-item"  data-aos="{{ $aoses[$randomNumber] }}" data-aos-duration="1000">
                   <div class="srv-img">
                     <a href="{{ url("project/" . $projectCategory->slug )}}">
-                      <img src="{{ asset('storage/'. $projectCategory->projects[0]->image)}}" alt="">
+                      <img src="{{ asset('storage/'. $projectCategory->image)}}" alt="">
                     </a>
                   </div>
                   <div class="services-content">

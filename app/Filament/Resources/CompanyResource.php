@@ -63,8 +63,6 @@ class CompanyResource extends Resource
                             ->label('LinkedIn'),
                         TextInput::make('youtube')
                             ->label('Youtube'),
-                        TextInput::make('team_total')->label('Total Team')->minValue(0)->required(),
-                        TextInput::make('facility_total')->label('Total Facilitas (Alat)')->minValue(0)->required(),
                         Textarea::make('video_link')
                             ->label('Link Video')
                             ->required(),
@@ -244,50 +242,14 @@ class CompanyResource extends Resource
                                     dd("Error memproses gambar: " . $e->getMessage());
                                 }
                             }),
-                        FileUpload::make('parallax_image')
-                            ->label('Parallax Image (1920x751)')
-                            // ->directory('images')
+                        FileUpload::make('modal_image')
+                            ->label('Modal Image')
+                            ->directory('images')
                             ->image()
-                            ->maxSize(2048)
-                            // ->getUploadedFileNameForStorageUsing(fn () => 'parallax.png')
-                            ->required()
-                        ->afterStateUpdated(function ($state, callable $set) {
-                            if (!$state instanceof TemporaryUploadedFile) {
-                                return;
-                            }
-
-                            $fileName = 'parallax' . time() .  '.' . $state->getClientOriginalExtension();
-
-                            $storedPath = $state->storePubliclyAs('images', $fileName, 'public');
-
-                            $publicPath = 'images/' . $fileName;
-                            $storagePath = Storage::disk('public')->path($publicPath);
-
-                            if (!Storage::disk('public')->exists($publicPath)) {
-                                dd("File tidak ditemukan setelah disimpan: " . $storagePath);
-                            }
-
-                            $realPath = realpath($storagePath);
-                            if (!$realPath) {
-                                dd("Path tidak valid: " . $storagePath);
-                            }
-
-                            $mimeType = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $realPath);
-                            if (!in_array($mimeType, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
-                                dd("file bukan gambar yang valid");
-                            }
-
-                            $manager = new ImageManager(new Driver());
-                            try {
-                                $image = $manager->read($realPath)
-                                    ->cover(1920, 751)
-                                    ->encode(new JpegEncoder(quality: 80));
-                                Storage::disk('public')->put($publicPath, (string) $image);
-                                $set('parallax_image', [$publicPath]);
-                            } catch (\Exception $e) {
-                                dd("Error memproses gambar: " . $e->getMessage());
-                            }
-                        }),
+                            ->maxSize(2048),
+                            // ->getUploadedFileNameForStorageUsing(fn () => 'parallax.png')    
+                        
+                              
                     ])
             ]);
     }

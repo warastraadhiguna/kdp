@@ -34,8 +34,20 @@ class Company extends Model
         'mission',
         'vision_mission_image',
         'parallax_image',
-        'team_total',
-        'facility_total'
+        'modal_image',
+        'title_counter1',
+        'title_counter2',
+        'title_counter3',
+        'note_counter1',
+        'note_counter2',
+        'note_counter3',                                
+        'total_counter1',
+        'total_counter2',
+        'total_counter3',        
+        'show_parallax_info', 
+        'parallax_text1',
+        'parallax_text2',
+        'show_counter_info'
     ];
     protected $casts = [
         'establishment_date' => 'date', // Pastikan ini ada

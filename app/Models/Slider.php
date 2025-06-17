@@ -14,6 +14,7 @@ class Slider extends Model
         'title',
         'note',
         'image',
+        'show_info',
         'index',
     ];
 

@@ -83,6 +83,8 @@
   <script src="{{ asset('assets/js/plugins/aos.js')}}"></script>
   <script src="{{ asset('assets/js/main.js')}}"></script>
 
+<!-- Panggil manual -->
+
   <script>
   function swiperInit() {
     if ($(".hero-slider").length) {
@@ -326,7 +328,45 @@
     // Services Slider
     if ($(".service-slider").length) {
       var servicesslider = new Swiper(".service-slider", {
-        slidesPerView: 3,
+        slidesPerView: 5,
+        spaceBetween: 30,
+        pagination: {
+          el: ".srv-swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".srv-swiper-button-next",
+          prevEl: ".srv-swiper-button-prev",
+        },      
+        breakpoints: {
+          1200: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+          992: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          576: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+        },
+      }); 
+    }
+
+//project
+if ($(".service-slider-project").length) {
+      var servicesslider = new Swiper(".service-slider-project", {
+        slidesPerView: 4,
         spaceBetween: 30,
         pagination: {
           el: ".srv-swiper-pagination",
@@ -334,19 +374,19 @@
         },
         breakpoints: {
           1200: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 30,
           },
           992: {
-            slidesPerView: 2,
+            slidesPerView: 4,
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 2,
+            slidesPerView: 4,
             spaceBetween: 20,
           },
           576: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 10,
           },
           0: {
@@ -356,6 +396,8 @@
         },
       });
     }
+
+
 
     // Client Slider
     if ($(".clients-slider").length) {
@@ -391,9 +433,42 @@
       });
     }
   }
+  window.addEventListener("load", function () {
+  const sliderEl = document.querySelector(".service-slider");
 
-  </script>
+  if (sliderEl && sliderEl.querySelector(".swiper-wrapper").children.length > 0) {
+    const nextBtn = document.querySelector(".srv-swiper-button-next");
+    const prevBtn = document.querySelector(".srv-swiper-button-prev");
 
+    new Swiper(sliderEl, {
+      slidesPerView: 5,
+      spaceBetween: 30,
+      pagination: {
+        el: ".srv-swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".srv-swiper-button-next",
+        prevEl: ".srv-swiper-button-prev",
+      },
+      breakpoints: {
+        1200: { slidesPerView: 5, spaceBetween: 30 },
+        992: { slidesPerView: 4, spaceBetween: 20 },
+        768: { slidesPerView: 3, spaceBetween: 20 },
+        576: { slidesPerView: 2, spaceBetween: 10 },
+        0:   { slidesPerView: 1, spaceBetween: 0 },
+      },
+      on: {
+        init: function () {
+          if (nextBtn) nextBtn.style.display = 'flex';
+          if (prevBtn) prevBtn.style.display = 'flex';
+        }
+      }
+    });
+  }
+});
+
+  </script> 
 </body>
 
 </html>

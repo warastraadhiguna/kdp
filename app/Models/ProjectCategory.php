@@ -13,6 +13,8 @@ class ProjectCategory extends Model
         'title',
         'slug',
         'introduction',
+        'image',
+        'breadcrumb_image',
         'index'
     ];
 

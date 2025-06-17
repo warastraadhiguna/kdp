@@ -1,5 +1,6 @@
   <section>
-    <div class="cs-cta-wrap" data-src="assets/img/cta-bg.jpg">
+    <div class="cs-cta-wrap">
+      {{-- <div class="cs-cta-wrap" data-src="assets/img/cta-bg.jpg">       --}}
       <div class="container">
         <div class="row">
           <div class="cta-content text-center">

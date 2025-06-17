@@ -1,4 +1,8 @@
-  <section>
+<?php 
+  $aoses = ['flip-left','fade-down-left','fade-down','fade-up-right','flip-down','zoom-in-down'];
+  $randomNumber = rand(0, 5);
+?>
+<section>
     <div class="cs-com-strength theme-black-bg theme-dark">
       <div class="cs-height-140"></div>
       <div class="container">
@@ -18,7 +22,7 @@
           <div class="col-xl-5">
             <div class="cs-video-area">
               <div class="cs-video" data-aos="fade-top" data-aos-duration="1000">
-                <img src="{{ asset('storage/'. $company->video_thumbnail_image)}}" alt="">
+                <img  data-aos="{{ $aoses[$randomNumber] }}" data-aos-duration="1000" src="{{ asset('storage/'. $company->video_thumbnail_image)}}" alt="">
                 <div class="cs-video-btn">
                   <a href="{{ $company->video_link }}" class="cs_video_open"><svg width="26" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M25.7939 15.2383L0.293944 29.9607L0.293945 0.515848L25.7939 15.2383Z" fill="#F57500"/>

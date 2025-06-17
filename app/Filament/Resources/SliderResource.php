@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Forms\Components\Toggle;
 use Filament\Tables;
 use App\Models\Slider;
 use Filament\Forms\Form;
@@ -30,9 +31,9 @@ class SliderResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->label('Judul'),
+                TextInput::make('title')->label('Judul')->required(),
                 Textarea::make('note')->label('Catatan')->required(),
-                TextInput::make('index')->label('Indeks')->minValue(0)->required(),
+                TextInput::make('index')->label('Indeks')->minValue(0)->required(),          
                 FileUpload::make('image')
                     ->label('Gambar (1920x980)')
                     // ->directory('images/sliders') // Direktori penyimpanan di `storage/app/public`
@@ -76,6 +77,16 @@ class SliderResource extends Resource
                             dd("Error memproses gambar: " . $e->getMessage());
                         }
                     }),
+
+                    Toggle::make('show_info')
+                    ->label('Tampilkan Informasi')
+                    ->onColor('success')
+                    ->offColor('danger')
+                    ->required()
+                    ->dehydrateStateUsing(fn (bool $state) => $state ? 'y' : 'n')
+                    ->afterStateHydrated(fn ($state, $set) => $set('show_info', $state === 'y'))
+                
+                
             ]);
     }
 
@@ -90,6 +101,11 @@ class SliderResource extends Resource
                 ImageColumn::make('image')
                     ->label('Gambar')
                     ->size(50), // Ukuran gambar
+                TextColumn::make('show_info')
+                    ->label('Informasi')
+                    ->formatStateUsing(fn ($state) => $state === 'y' ? 'Tampil' : 'Tidak')
+                    ->badge()
+                    ->color(fn ($state) => $state === 'y' ? 'success' : 'gray'),                    
             ])
             ->filters([
                 //
