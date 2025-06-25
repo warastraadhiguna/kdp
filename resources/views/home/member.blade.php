@@ -53,40 +53,43 @@
   $aoses = ['flip-left','fade-down-left','fade-down','fade-up-right','flip-down','zoom-in-down'];
   $randomNumber = rand(0, 5);
 ?>
-  <section>
-    <div class="team-wrap py-5">
-      <div class="container">
-        <div class="cs-heading-with-animation max-width-700 text-center mx-auto">
-          <h2 class="cs-heading">Our Team</h2>
-          <span class="cs-text-style-h1 cs-animated-text">TEAM</span>
-          <div class="cs-height-50"></div>
-        </div>
-  
+<section>
+  <div class="team-wrap py-5">
+    <div class="container">
+      <div class="cs-heading-with-animation max-width-700 text-center mx-auto">
+        <h2 class="cs-heading">Our Team</h2>
+        <span class="cs-text-style-h1 cs-animated-text">TEAM</span>
         <div class="cs-height-50"></div>
-        <div class="d-flex flex-wrap justify-content-center gap-4">
-          @foreach($teamMembers as $teamMember)
-          <div class="team-card col-md-4 d-flex justify-content-center mb-5" data-aos="{{ $aoses[$randomNumber] }}" data-aos-delay="{{ $loop->index * 100 }}">
-            <div class="card shadow-lg border-0 overflow-hidden">
-              <img src="{{ asset('storage/' . $teamMember->image) }}" class="card-img-top" alt="{{ $teamMember->name }}">
-              <div class="card-body text-center">
-                <h5 class="card-title mb-1"><a href="{{ url("team-member/" . $teamMember->slug )}}">{{ $teamMember->name }} </a></h5>
-                <p class="text-muted mb-2">{{ $teamMember->position }}</p>
-                <div class="social-icons">
-                  @if($teamMember->linkedin)
-                    <a href="{{ $teamMember->linkedin }}" target="_blank"><i class="flaticon-linkedin-big-logo"></i></a>
-                  @endif
-                  @if($teamMember->instagram)
-                    <a href="{{ $teamMember->instagram }}" target="_blank"><i class="flaticon-instagram"></i></a>
-                  @endif
+      </div>
+
+      <div class="cs-height-50"></div>
+      <div class="row">
+        @foreach($teamMembers as $teamMember)
+          <div class="col-md-4 mb-4">
+            <div class="team-card d-flex justify-content-center" data-aos="{{ $aoses[$randomNumber] }}" data-aos-delay="{{ $loop->index * 100 }}">
+              <div class="card shadow-lg border-0 overflow-hidden">
+                <img src="{{ asset('storage/' . $teamMember->image) }}" class="card-img-top" alt="{{ $teamMember->name }}">
+                <div class="card-body text-center">
+                  <h5 class="card-title mb-1"><a href="{{ url("team-member/" . $teamMember->slug )}}">{{ $teamMember->name }} </a></h5>
+                  <p class="text-muted mb-2">{{ $teamMember->position }}</p>
+                  <div class="social-icons">
+                    @if($teamMember->linkedin)
+                      <a href="{{ $teamMember->linkedin }}" target="_blank"><i class="flaticon-linkedin-big-logo"></i></a>
+                    @endif
+                    @if($teamMember->instagram)
+                      <a href="{{ $teamMember->instagram }}" target="_blank"><i class="flaticon-instagram"></i></a>
+                    @endif
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         @endforeach
-        
-        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
   
   

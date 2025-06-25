@@ -2704,22 +2704,22 @@ footer P {
 .team-card .card {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   border-radius: 16px;
+  height: 100%;  /* Membuat card mengambil tinggi penuh */
+  display: flex;
+  flex-direction: column;  /* Mengatur isi card dalam kolom vertikal */
 }
 
-.team-card .card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+.team-card .card-body {
+  flex-grow: 1;  /* Memaksa body card mengisi ruang yang tersedia */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* Memastikan isi card terpisah dengan ruang yang cukup */
 }
 
 .team-card .card-img-top {
-  height: 280px;
-  object-fit: cover;
+  height: 200px;  /* Atur tinggi gambar agar seragam */
+  object-fit: cover;  /* Gambar tetap terpotong proporsional */
   transition: transform 0.4s ease;
-  border-radius: 0;
-}
-
-.team-card .card:hover .card-img-top {
-  transform: scale(1.08);
 }
 
 .team-card .social-icons a {
@@ -2733,6 +2733,7 @@ footer P {
   color: #007bff;
   transform: scale(1.2);
 }
+
 
 /* experience buatan sendiri */
 .ae-content.transparent-bg {
