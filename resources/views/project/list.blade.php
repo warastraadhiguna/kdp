@@ -96,8 +96,6 @@
 </div>
 
 
-
-
 <script>
 document.querySelectorAll(".open-modal").forEach(el => {
     el.addEventListener("click", function(event) {

@@ -47,49 +47,21 @@
               <div class="cs-container-border"></div>
             </div>      
         <div class="gallery" id="static-thumbnails">
-
-            {{-- <div class="item gallery-horizontal">
-                <a href="assets/img/gallery_3.jpg">
-                    <img src="assets/img/gallery_3.jpg" alt="Phto" />
-                    <div class="frame gallery-hover-icon">
-                       <i class="flaticon-magnifying-glass"></i>
-                    </div>
-                </a>
-            </div> --}}
-
-
-
             @foreach($galleries as $key => $gallery)
-              <div class="item {{ $key %3 != 0 ? '' : 'gallery-vertical' }}">
-                  <a href="{{ asset('storage/' . $gallery->image ) }}">
-                      <img src="{{ asset('storage/' . $gallery->image ) }}" alt="Phto" />
-                      <div class="frame gallery-hover-icon">
-                        <i class="flaticon-magnifying-glass"></i>
-                      </div>
-                  </a>
-              </div>
-            @endforeach
-
-
-
-            {{-- <div class="item gallery-horizontal">
-                <a href="assets/img/gallery_6.jpg">
-                    <img src="assets/img/gallery_6.jpg" alt="Phto" />
+            <div class="item 
+                {{ 
+                    // Logika untuk menentukan class berdasarkan urutan gambar
+                    ($key % 4 == 0) ? 'gallery-vertical' : 
+                    (($key % 4 == 2) ? 'gallery-horizontal' : '') 
+                }}">
+                <a href="{{ asset('storage/' . $gallery->image) }}">
+                    <img src="{{ asset('storage/' . $gallery->image) }}" alt="Photo{{ $key }}" />
                     <div class="frame gallery-hover-icon">
-                       <i class="flaticon-magnifying-glass"></i>
+                        <i class="flaticon-magnifying-glass"></i>
                     </div>
                 </a>
-            </div> --}}
-
-
-          {{-- <div class="item gallery-vertical">
-              <a href="assets/img/gallery_2.jpg">
-                  <img src="assets/img/gallery_2.jpg" alt="Phto" />
-                  <div class="frame gallery-hover-icon">
-                     <i class="flaticon-magnifying-glass"></i>
-                  </div>
-              </a>
-          </div> --}}
+            </div>
+        @endforeach
         </div>
     </section>
     <!-- Snd Gallery -->
