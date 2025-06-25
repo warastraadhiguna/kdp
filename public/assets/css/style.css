@@ -2746,6 +2746,57 @@ footer P {
   backdrop-filter: blur(2px); /* opsional */
 }
 
+
+/* buatan sendiri */
+/* Membuat layout flex untuk kolom gambar dan konten */
+.cs-vision-mission-wrap-in {
+  display: flex;
+  align-items: stretch; /* Pastikan kedua kolom memiliki tinggi yang sama */
+}
+
+/* Kolom Gambar */
+.cs-vision-mission-img img {
+  object-fit: cover;  /* Menjaga gambar tetap proporsional */
+  width: 100%; /* Gambar mengisi lebar kolom */
+  height: 100%; /* Gambar mengisi tinggi kolom */
+  max-height: 500px; /* Batasi tinggi gambar agar tidak terlalu besar */
+  border-radius: 20px;
+}
+
+/* Kolom Konten */
+.cs-vision-mission-wrap-in .p-0.m-0 {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.cs-vision-mission-heading-with-animation h2 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Bagian Vision-Mission */
+.cs-vision-mission-list-feature h6 {
+  font-size: 30px;
+  text-align: center;
+}
+
+.cs-vision-mission-list-feature p {
+  font-size: 20px;
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* Tombol "Brief Histories" */
+.cs-vision-mission-primary-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
 @keyframes swipeHint {
     0% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
     100% { opacity: 1; transform: translateX(-50%) translateY(5px); }
