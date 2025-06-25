@@ -1,9 +1,9 @@
 <section>
     <div class="cs-vision-mission-wrap">
-      <div class="container-fluid cs-vision-mission-wrap-in d-flex flex-column flex-lg-row align-items-stretch">
+      <div class="container-fluid cs-vision-mission-wrap-in d-flex flex-column flex-lg-row align-items-stretch p-5">
         
         <!-- Kolom Gambar -->
-        <div class="p-0 m-0" style="flex: 1; min-width: 300px;">
+        <div class="p-0 m-1" style="flex: 1; min-width: 300px;">
           <div class="cs-vision-mission-img h-100">
             <div class="animate-img-wrap h-100">
               <img 
@@ -18,7 +18,9 @@
         </div>
   
         <!-- Kolom Konten -->
-        <div class="p-0 m-0" style="flex: 1; min-width: 300px;">
+        <div class="p-0 m-1" style="flex: 1; min-width: 300px;"                 
+        data-aos="zoom-out"
+        data-aos-duration="1000">
           <div style="
             background-color: white;
             padding: 30px;
