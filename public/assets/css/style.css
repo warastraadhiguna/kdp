@@ -4908,6 +4908,62 @@ button i {
   display: block;
 }
 
+/* project buatan sendiri */
+/* CSS untuk Layout Projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Mengatur kolom grid yang fleksibel */
+  gap: 30px; /* Jarak antar item */
+  padding: 0;
+}
+
+.project-item {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item-in {
+  overflow: hidden;
+}
+
+.project-item-in img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Menjaga gambar tetap proporsional */
+  transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-5px); /* Efek saat hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-item-in img:hover {
+  transform: scale(1.05); /* Efek zoom saat gambar disorot */
+}
+
+.project-item-text {
+  padding: 20px;
+}
+
+.project-item-text h5 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.project-item-text .cs-text_b_line {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.project-item-text .cs-text_b_line:hover {
+  text-decoration: underline;
+}
+
+
 @media screen and (max-width: 1400px) {
   .project-masonry .tag-item {
     display: none;

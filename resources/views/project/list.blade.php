@@ -3,64 +3,59 @@
   $randomNumber = rand(0, 5);
 ?>
 <section class="projects-list">
-    <div class="container lg-gutter-control">
-              <div class="max-width-1120 m-auto">
-                <h4>
-                    {{ $projectCategory->title }}
-                </h4>
-                <div class="cs-height-30"></div>                
-                {{-- <p  style="white-space: pre-line;text-align:justify; font-weight: bold;">{{ $projectCategory->introduction }}
-                </p> --}}
-                {!! $projectCategory->introduction !!}
-                <div class="cs-height-40"></div>
+  <div class="container lg-gutter-control">
+      <div class="max-width-1120 m-auto">
+          <h4>
+              {{ $projectCategory->title }}
+          </h4>
+          <div class="cs-height-30"></div>                
+          {!! $projectCategory->introduction !!}
+          <div class="cs-height-40"></div>
 
-              <div class="cs-container-border"></div>
-            </div>         
-      <div class="row">
-        @foreach($projects as $project)
-                  <div class="col-xl-6 col-md-12">
-          <div class="project-item" data-aos="{{ $aoses[$randomNumber] }}" data-aos-duration="1000">
-            <div class="project-item-in">
-              <a href="#">
-                <img src="{{ asset('storage/' . $project->image) }}" alt="">
-              </a>
-            </div>
-            <div class="project-item-text">
-              <div class="tag-item">
-                <a href="#"><span>{{ $project->owner->name }}</span></a>
-              </div>
-              <a href="#" class="open-modal" 
-                data-name="{{ $project->name }}"
-                data-scope="{{ $project->scope }}"
-                data-location="{{ $project->location }}"
-                data-owner="{{ $project->owner->name }}"             
-                data-schedule="{{ $project->schedule }}"
-                data-image="{{ asset('storage/' . $project->image) }}">
-                <h5>{{ $project->name }}</h5>
-              </a>
-
-              <a href="#" class="open-modal" 
-                data-name="{{ $project->name }}"
-                data-scope="{{ $project->scope }}"
-                data-location="{{ $project->location }}"
-                data-owner="{{ $project->owner? $project->owner->name : '' }}"                  
-                data-schedule="{{ $project->schedule }}"
-                data-image="{{ asset('storage/' . $project->image) }}"  
-                class="cs-text_b_line">
-                <span>{{ $project->location }}</span>
-                <i class="flaticon-right-arrow"></i>
-              </a>
-            </div>
-          </div>
-          <div class="cs-height-30"></div>
-        </div>
-        @endforeach
-
- 
+          <div class="cs-container-border"></div>
       </div>
-    </div>
 
-<!-- Custom Modal -->
+      <!-- Menggunakan CSS Grid untuk proyek -->
+      <div class="projects-grid">
+          @foreach($projects as $project)
+              <div class="project-item" data-aos="{{ $aoses[$randomNumber] }}" data-aos-duration="1000">
+                  <div class="project-item-in">
+                      <a href="#">
+                          <img src="{{ asset('storage/' . $project->image) }}" alt="">
+                      </a>
+                  </div>
+                  <div class="project-item-text">
+                      <div class="tag-item">
+                          <a href="#"><span>{{ $project->owner->name }}</span></a>
+                      </div>
+                      <a href="#" class="open-modal" 
+                          data-name="{{ $project->name }}"
+                          data-scope="{{ $project->scope }}"
+                          data-location="{{ $project->location }}"
+                          data-owner="{{ $project->owner->name }}"             
+                          data-schedule="{{ $project->schedule }}"
+                          data-image="{{ asset('storage/' . $project->image) }}">
+                          <h5>{{ $project->name }}</h5>
+                      </a>
+
+                      <a href="#" class="open-modal" 
+                          data-name="{{ $project->name }}"
+                          data-scope="{{ $project->scope }}"
+                          data-location="{{ $project->location }}"
+                          data-owner="{{ $project->owner? $project->owner->name : '' }}"                  
+                          data-schedule="{{ $project->schedule }}"
+                          data-image="{{ asset('storage/' . $project->image) }}"  
+                          class="cs-text_b_line">
+                          <span>{{ $project->location }}</span>
+                          <i class="flaticon-right-arrow"></i>
+                      </a>
+                  </div>
+              </div>
+          @endforeach
+      </div>
+  </div>
+</section>
+
 <!-- Custom Modal -->
 <div id="customModal" class="modal-overlay">
   <div class="modal-box">
