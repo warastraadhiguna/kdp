@@ -243,7 +243,7 @@ class CompanyResource extends Resource
                                 }
                             }),
                         FileUpload::make('modal_image')
-                            ->label('Modal Image')
+                            ->label('Pop Up Image Awal')
                             ->directory('images')
                             ->image()
                             ->maxSize(2048),

@@ -617,85 +617,79 @@ textarea {
 }
 
 /* START-MODAL OVERLAY: menutupi seluruh halaman */
+/* Modal menutupi seluruh layar */
+/* Modal menutupi seluruh layar */
 .start-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;       /* lebar 100% viewport */
   height: 100vh;      /* tinggi 100% viewport */
-  background: rgba(0, 0, 0, 0.6);  /* latar semi-transparan */
-  display: flex;      
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;     /* pastikan di atas elemen lain */
+  background: rgba(0, 0, 0, 0.9);  /* latar semi-transparan */
+  display: flex;
+  align-items: center;  /* Menjaga konten tetap di tengah secara vertikal */
+  justify-content: center; /* Menjaga konten tetap di tengah secara horizontal */
+  z-index: 9999;        /* Pastikan modal di atas semua elemen lain */
 }
 
-/* isi kotak modal di dalam start-modal */
+/* Kotak modal */
 .start-modal .modal-box {
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 90%;     /* lebar maksimal 90% layar */
-  max-height: 90%;    /* tinggi maksimal 90% layar */
-  overflow-y: auto;   /* scroll jika isinya terlalu panjang */
-  position: relative; /* agar tombol close bisa di-posisikan */
+  position: relative;
+  background: transparent; /* Transparan, modal benar-benar hanya menampilkan gambar */
+  max-width: 100%; /* Max width 100% untuk mengikuti layar */
+  max-height: 100%; /* Max height 100% untuk mengikuti layar */
+  padding: 0;
+  overflow: hidden;
 }
 
-/* tombol close di dalam start-modal */
+/* Tombol close */
 .start-modal .close-btn {
   position: absolute;
   top: 10px;
   right: 15px;
   font-size: 32px;
+  color: #fff;
   cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px;
+  z-index: 10001;  /* Pastikan tombol close berada di atas konten */
 }
 
-/* styling untuk gambar full-width di modal */
+/* Gambar modal untuk mengisi layar penuh */
 .modal-image-full {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
-  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Memastikan gambar menutupi seluruh layar */
+  object-position: center; /* Menjaga gambar tetap terpusat */
+  border-radius: 0;
 }
 
-.start-modal .modal-box {
-  background: transparent !important;
-  box-shadow: none;          /* hilangkan bayangan kalau ada */
-}
-
-.start-modal .close-btn {
-  /* Tetap posisi absolute */
+/* Tombol Profile di Tengah */
+.profile-btn-container {
   position: absolute;
-  top: 10px;
-  right: 15px;
+  top: 50%; /* Tengah vertikal */
+  left: 50%; /* Tengah horizontal */
+  transform: translate(-50%, -50%); /* Menjaga posisi tombol di tengah */
+  z-index: 10001; /* Pastikan tombol berada di atas konten */
+}
 
-  /* Buat ukuran area klik lebih besar */
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+.profile-btn {
+  background-color: #E32E16;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
   text-align: center;
-
-  /* Warna dan background agar selalu kelihatan */
-  color: #fff;                               /* putih kontras di overlay gelap */
-  background: rgba(0, 0, 0, 0.5);            /* lingkaran gelap semi */
-  border-radius: 50%;                        /* bulat */
-  font-size: 24px;                           /* ukuran simbol */
+  font-size: 18px;
+  text-decoration: none;
   font-weight: bold;
-
-  /* Pastikan di layer atas */
-  z-index: 10001;
-
-  /* Cursor dan user‐select */
   cursor: pointer;
-  user-select: none;
 }
 
-/* Hover effect (opsional) */
-.start-modal .close-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
+.profile-btn:hover {
+  background-color: black;
 }
+
 
 /* Responsive */
 @media (max-width: 768px) {

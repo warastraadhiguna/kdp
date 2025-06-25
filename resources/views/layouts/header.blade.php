@@ -20,7 +20,7 @@
           <div class="cs_nav cs_medium">
             <ul class="cs_nav_list">
               <li>
-                <a href="{{ url('/')}}" class="cs-text_b_line"><span>HOME</span></a>
+                <a href="{{ url('/home')}}" class="cs-text_b_line"><span>HOME</span></a>
               </li>
               <li class="menu-item-has-children">
                 <a href="#" class="cs-text_b_line"><span>ABOUT US</span></a>

@@ -1,8 +1,10 @@
 <div id="startModal" class="start-modal">
     <div class="modal-box">
       <!-- tombol close jika nanti mau ditambahkan lagi -->
-      <span class="close-btn">&times;</span>
-  
+      {{-- <span class="close-btn">&times;</span> --}}
+      <div class="profile-btn-container">
+        <a href="#" class="profile-btn">Profile</a>
+      </div>
       <!-- tambahkan gambar di sini -->
       <div class="modal-content">
         <img
@@ -20,7 +22,7 @@
 <script>
     window.addEventListener('load', () => {
       const modal    = document.getElementById('startModal');
-      const closer   = modal.querySelector('.close-btn');
+      const closer   = modal.querySelector('.profile-btn');
   
       // buka modal dengan force inline style
       modal.style.display = 'flex';        // atau 'block' tergantung layout overlay-mu
