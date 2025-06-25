@@ -2702,13 +2702,15 @@ footer P {
 
 /* team member buatan sendiri */
 .team-wrap .card-img-top {
-  transition: transform 0.4s ease;  /* Menambahkan transisi saat gambar berubah */
+  transition: transform 0.4s ease, border-radius 0.4s ease, border 0.4s ease; /* Menambahkan transisi pada border */
+  border-radius: 10px; /* Membuat gambar memiliki sudut melengkung */
+  border: 2px solid #ddd; /* Menambahkan border tipis dengan warna abu-abu muda */
 }
 
 .team-wrap .col-lg-4:hover .card-img-top {
-  transform: scale(1.1);  /* Zoom in gambar saat hover */
+  transform: scale(1.1); /* Zoom in gambar saat hover */
+  border-radius: 12px; /* Sedikit memperbesar lengkungan saat hover */
 }
-
  
 
 
