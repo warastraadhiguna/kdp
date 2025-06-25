@@ -3,7 +3,7 @@
 @section('content')
  <!-- Start Common BreadCrumb -->
   <section>
-    <div class="cs-breadcrumb-wrap theme-dark" data-src="{{ asset('storage/' . $projectCategory->image) }}">
+    <div class="cs-breadcrumb-wrap theme-dark" data-src="{{ asset('storage/' . $projectCategory->breadcrumb_image) }}">
       <div class="container">
         <div class="row cs_center">
           <div class="cs-bread-page-title-area">
