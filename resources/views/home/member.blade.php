@@ -64,32 +64,31 @@
 
       <div class="cs-height-50"></div>
       <div class="row">
-        @foreach($teamMembers as $teamMember)
-          <div class="col-md-4 mb-4">
-            <div class="team-card d-flex justify-content-center" data-aos="{{ $aoses[$randomNumber] }}" data-aos-delay="{{ $loop->index * 100 }}">
-              <div class="card shadow-lg border-0 overflow-hidden">
-                <img src="{{ asset('storage/' . $teamMember->image) }}" class="card-img-top" alt="{{ $teamMember->name }}">
-                <div class="card-body text-center">
-                  <h5 class="card-title mb-1"><a href="{{ url("team-member/" . $teamMember->slug )}}">{{ $teamMember->name }} </a></h5>
-                  <p class="text-muted mb-2">{{ $teamMember->position }}</p>
-                  <div class="social-icons">
-                    @if($teamMember->linkedin)
-                      <a href="{{ $teamMember->linkedin }}" target="_blank"><i class="flaticon-linkedin-big-logo"></i></a>
-                    @endif
-                    @if($teamMember->instagram)
-                      <a href="{{ $teamMember->instagram }}" target="_blank"><i class="flaticon-instagram"></i></a>
-                    @endif
-                  </div>
-                </div>
-              </div>
+        @foreach($teamMembers as $teamMember)        
+          <div class="col-lg-4"  data-aos="{{ $aoses[$randomNumber] }}" data-aos-delay="{{ $loop->index * 100 }}">
+            <a href="{{ url("team-member/" . $teamMember->slug )}}">            
+            <img src="{{ asset('storage/' . $teamMember->image) }}" class="card-img-top" alt="{{ $teamMember->name }}">
+        
+            <h5 class="card-title mb-1">{{ $teamMember->name }} </h5>
+            <p class="text-muted mb-2">{{ $teamMember->position }}</p>
+            <div class="social-icons">
+              @if($teamMember->linkedin)
+                <a href="{{ $teamMember->linkedin }}" target="_blank"><i class="flaticon-linkedin-big-logo"></i></a>
+              @endif
+              @if($teamMember->instagram)
+                <a href="{{ $teamMember->instagram }}" target="_blank"><i class="flaticon-instagram"></i></a>
+              @endif
             </div>
-          </div>
+          </a>  
+          </div><!-- /.col-lg-4 -->
         @endforeach
-      </div>
+      </div><!-- /.row -->      
     </div>
   </div>
 </section>
 
 
-  
+
+
+
   

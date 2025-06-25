@@ -51,7 +51,7 @@ class TeamMemberResource extends Resource
                     ->label('Linkedin'),
                 TextInput::make('index')->label('Indeks (0 untuk tidak tampil)')->minValue(0)->required(),
                 FileUpload::make('image')
-                    ->label('Logo (254 x 289)')
+                    ->label('Image (254 x 289)')
                     ->image() // Validasi gambar
                     ->required()
                     ->maxSize(2048)

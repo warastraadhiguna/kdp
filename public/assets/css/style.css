@@ -2701,38 +2701,15 @@ footer P {
  
 
 /* team member buatan sendiri */
-.team-card .card {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  border-radius: 16px;
-  height: 100%;  /* Membuat card mengambil tinggi penuh */
-  display: flex;
-  flex-direction: column;  /* Mengatur isi card dalam kolom vertikal */
+.team-wrap .card-img-top {
+  transition: transform 0.4s ease;  /* Menambahkan transisi saat gambar berubah */
 }
 
-.team-card .card-body {
-  flex-grow: 1;  /* Memaksa body card mengisi ruang yang tersedia */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;  /* Memastikan isi card terpisah dengan ruang yang cukup */
+.team-wrap .col-lg-4:hover .card-img-top {
+  transform: scale(1.1);  /* Zoom in gambar saat hover */
 }
 
-.team-card .card-img-top {
-  height: 200px;  /* Atur tinggi gambar agar seragam */
-  object-fit: cover;  /* Gambar tetap terpotong proporsional */
-  transition: transform 0.4s ease;
-}
-
-.team-card .social-icons a {
-  margin: 0 6px;
-  color: #333;
-  font-size: 18px;
-  transition: color 0.3s, transform 0.3s;
-}
-
-.team-card .social-icons a:hover {
-  color: #007bff;
-  transform: scale(1.2);
-}
+ 
 
 
 /* experience buatan sendiri */
