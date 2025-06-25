@@ -10,9 +10,10 @@
           </h4>
           <div class="cs-height-30"></div>                
           {!! $projectCategory->introduction !!}
-          <div class="cs-height-40"></div>
+          <div class="cs-height-40"></div>         
 
           <div class="cs-container-border"></div>
+          <div class="cs-height-40"></div>
       </div>
 
       <!-- Menggunakan CSS Grid untuk proyek -->
