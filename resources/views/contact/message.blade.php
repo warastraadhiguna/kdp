@@ -21,8 +21,8 @@
                         @else
                         <div class="cs-contact-form-wrap">
                             <div class="position-relative" data-aos="fade-up" data-aos-duration="500">
-                                <h2 class="cs-heading">Send Us a Message <br />to Get in Touch</h2>
-                                <span class="cs-text-style-h1 cs-animated-text">CONTACT US</span>
+                                <h2 class="cs-heading">{{ $company->contact_us_text }}</h2>
+                                <span class="cs-text-style-h1 cs-animated-text">{{ $company->contact_us_text }}</span>
                             </div>
 
                             <div class="cs-height-35"></div>

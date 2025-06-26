@@ -32,7 +32,7 @@
             justify-content: center;
           ">
             <div class="cs-vision-mission-heading-with-animation">
-              <h2 class="cs-vision-mission-heading text-center">Vision Mission</h2>
+              <h2 class="cs-vision-mission-heading text-center">{{ $company->vision_mission_text }}</h2>
               <hr style="width: 50%; border: 2px solid black; margin: auto;">
             </div>
   

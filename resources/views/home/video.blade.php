@@ -8,7 +8,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xl-7">
-            <h2><span data-aos="fade-up" data-aos-duration="500">About Us</span> </h2>
+            <h2><span data-aos="fade-up" data-aos-duration="500">{{ $company->about_us_text }}</span> </h2>
             <div class="cs-height-10"></div>
             <p style="text-align: justify">{{ Illuminate\Support\Str::limit($company->about_us, 1100, '...') }}</p>
             <div class="cs-height-35"></div>

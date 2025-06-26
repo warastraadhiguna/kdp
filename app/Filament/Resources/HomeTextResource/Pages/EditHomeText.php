@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\CounterResource\Pages;
+namespace App\Filament\Resources\HomeTextResource\Pages;
 
-use App\Filament\Resources\CounterResource;
+use App\Filament\Resources\HomeTextResource;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\Eloquent\Model;
 
-class EditCounter extends EditRecord
+class EditHomeText extends EditRecord
 {
-    protected static string $resource = CounterResource::class;
+    protected static string $resource = HomeTextResource::class;
 
     public function getHeaderActions(): array
     {
@@ -35,6 +35,6 @@ class EditCounter extends EditRecord
 
     public function getRecord(): Model
     {
-        return CounterResource::getModel()::findOrFail(1); // Paksa hanya bisa edit ID 1
+        return HomeTextResource::getModel()::findOrFail(1); // Paksa hanya bisa edit ID 1
     }
 }

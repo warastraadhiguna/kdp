@@ -6,6 +6,7 @@ use App\Filament\Resources\CounterResource\Pages;
 use App\Filament\Resources\CounterResource\RelationManagers;
 use App\Models\Company;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -26,17 +27,48 @@ class CounterResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title_counter1')->label('Judul 1')->required(),            
-                TextInput::make('total_counter1')->label('Total 1')->minValue(0)->required(),  
-                TextInput::make('note_counter1')->label('Note 1')->required(),        
+                Section::make('Counter 1')
+                ->schema([
+                    TextInput::make('title_counter1')
+                        ->label('Judul 1')
+                        ->required(),
+                    TextInput::make('total_counter1')
+                        ->label('Total 1')
+                        ->minValue(0)
+                        ->required(),
+                    TextInput::make('note_counter1')
+                        ->label('Note 1')
+                        ->required(),
+                ]),  
 
-                TextInput::make('title_counter2')->label('Judul 2')->required(),
-                TextInput::make('note_counter2')->label('Note 2')->required(),
-                TextInput::make('total_counter2')->label('Total 2')->minValue(0)->required(),
+                Section::make('Counter 2')
+                ->schema([
+                    TextInput::make('title_counter2')
+                        ->label('Judul 2')
+                        ->required(),
+                    TextInput::make('note_counter2')
+                        ->label('Note 2')
+                        ->required(),
+                    TextInput::make('total_counter2')
+                        ->label('Total 2')
+                        ->minValue(0)
+                        ->required(),
+                ]),
                 
-                TextInput::make('title_counter3')->label('Judul 3')->required(),    
-                TextInput::make('note_counter3')->label('Note 3')->required(),               
-                TextInput::make('total_counter3')->label('Total 3')->minValue(0)->required(),         
+                Section::make('Counter 3')
+                ->schema([
+                    TextInput::make('title_counter3')
+                        ->label('Judul 3')
+                        ->required(),
+                    TextInput::make('note_counter3')
+                        ->label('Note 3')
+                        ->required(),
+                    TextInput::make('total_counter3')
+                        ->label('Total 3')
+                        ->minValue(0)
+                        ->required(),
+                ]),
+                     
                 Toggle::make('show_counter_info')
                 ->label('Tampilkan Informasi counter')
                 ->onColor('success')

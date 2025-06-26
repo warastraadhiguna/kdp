@@ -2,8 +2,8 @@
     <div class="container">
 
       <div class="cs-heading-with-animation text-center max-width-800 m-auto d-flex">
-        <h2 class="cs-heading">Explore Our Most Recent Blog Posts and Insights</h2>
-        <span class="cs-text-style-h1 cs-animated-text">RECENT NEWS</span>
+        <h2 class="cs-heading">{{ $company->news_text }}</h2>
+        <span class="cs-text-style-h1 cs-animated-text">{{ $company->news_text }}</span>
       </div>
       <div class="cs-height-50"></div>
 

@@ -57,8 +57,8 @@
   <div class="team-wrap py-5">
     <div class="container">
       <div class="cs-heading-with-animation max-width-700 text-center mx-auto">
-        <h2 class="cs-heading">Our Team</h2>
-        <span class="cs-text-style-h1 cs-animated-text">TEAM</span>
+        <h2 class="cs-heading">{{ $company->our_team_text }}</h2>
+        <span class="cs-text-style-h1 cs-animated-text">{{ $company->our_team_text }}</span>
         <div class="cs-height-50"></div>
       </div>
 

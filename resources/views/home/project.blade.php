@@ -7,8 +7,8 @@
       <div class="container-fluid">
         <div class="cs-section-height"></div>
         <div class="cs-heading-with-animation text-center max-width-700 m-auto d-flex">
-          <h2 class="cs-heading">Explore Our Most Recent Projects</h2>
-          <span class="cs-text-style-h1 cs-animated-text">PORTFOLIO</span>
+          <h2 class="cs-heading">{{ $company->project_text }}</h2>
+          <span class="cs-text-style-h1 cs-animated-text">{{ $company->project_text }}</span>
         </div>
   
         <div class="cs-height-50"></div>

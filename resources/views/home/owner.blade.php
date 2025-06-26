@@ -1,8 +1,8 @@
 <!-- Start Clients Section -->
 <section>
     <div class="cs-heading-with-animation text-center max-width-800 m-auto d-flex">
-      <h2 class="cs-heading">Clients</h2>
-      <span class="cs-text-style-h1 cs-animated-text">CLIENTS</span>
+      <h2 class="cs-heading">{{ $company->client_text }}</h2>
+      <span class="cs-text-style-h1 cs-animated-text">{{ $company->client_text }}</span>
     </div>
     <div class="cs-height-50"></div>
   
