@@ -2,8 +2,10 @@
 @extends('layouts.index')
 @section('content')
  <!-- Start Common BreadCrumb -->
+ @if($galleryCategory->breadcrumb_image)
+
   <section>
-    <div class="cs-breadcrumb-wrap theme-dark" data-src="{{ asset('storage/' . $company->breadcrumb_image) }}">
+    <div class="cs-breadcrumb-wrap theme-dark" data-src="{{ asset('storage/' . $galleryCategory->breadcrumb_image) }}">
       <div class="container">
         <div class="row cs_center">
           <div class="cs-bread-page-title-area">
@@ -26,6 +28,8 @@
     </div>
   </section>
   <!-- End Common BreadCrumb -->
+    
+ @endif
 
 
   <div class="cs-section-height"></div>

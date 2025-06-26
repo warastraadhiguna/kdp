@@ -13,6 +13,7 @@ class GalleryCategory extends Model
         'title',
         'slug',
         'introduction',
+        'breadcrumb_image',
         'index'
     ];
 
