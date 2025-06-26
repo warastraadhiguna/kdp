@@ -12,13 +12,18 @@
   <!-- Site Title -->
   <title>{{ $company->application_name }}</title>
   <link rel="stylesheet" href="{{ asset('assets/css/plugins/bootstrap.min.css') }}" />
+  @if((\Illuminate\Support\Facades\Request::is('*about')))
+  <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  @endif
+
   <link rel="stylesheet" href="{{ asset('assets/css/plugins/lightgallery.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper.min.css') }}" />
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/flaticon.css') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <link rel="stylesheet" href="{{ asset('assets/css/plugins/aos.css') }}" />
-  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />  
 </head>
 
 <body>

@@ -67,7 +67,6 @@
         </div>
       </div>
       <div class="cs-slider-pagi">
-
       </div>
     </div>
   </section>

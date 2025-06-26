@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\AboutSlider;
 use App\Models\Blog;
 use App\Models\GalleryCategory;
 use App\Models\Owner;
@@ -22,7 +23,7 @@ class HomeController extends Controller
     public function index()
     {
         $data = [
-            'sliders' => Slider::orderBy('index')->get(),
+            'sliders' => Slider::orderBy('index')->where('index', ">", 0)->get(),
             // 'clients' => Client::orderBy('index')->get(),
             'owners'  => Owner::orderBy('index')->get(),
             'projectCategories' => ProjectCategory::orderBy('index')->where('index', ">", "0")->get(),
@@ -39,6 +40,7 @@ class HomeController extends Controller
         $years = BriefHistory::orderBy('year')->pluck('year')->toArray();
 
         $data = [
+            'aboutSliders' => AboutSlider::orderBy('index')->where('index', ">", 0)->get(),
             'briefHistories' => BriefHistory::orderBy('year')->get(),
             'years' =>  $years,
         ];

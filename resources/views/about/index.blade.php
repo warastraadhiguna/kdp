@@ -2,7 +2,7 @@
 @extends('layouts.index')
 @section('content')
  <!-- Start Common BreadCrumb -->
-  <section>
+  {{-- <section>
     <div class="cs-breadcrumb-wrap theme-dark" data-src="{{ asset('storage/' . $company->breadcrumb_image) }}">
       <div class="container">
         <div class="row cs_center">
@@ -24,9 +24,26 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   <!-- End Common BreadCrumb -->
 
+  <section>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        @foreach($aboutSliders as $key => $slider)
+        <div class="carousel-item {{ $key == 0? 'active' : '' }}">
+          <img src="{{ asset('storage/' . $slider->image) }}" class="d-block w-100" alt="Slide{{ $key }}">  
+          <div class="container">
+            <div class="carousel-caption text-center">
+              <h2 class="cs_white_color">About Us</h2>        
+              <a href="{{ url('/')}}" class="cs-text_b_line cs_white_color"><span>HOME &nbsp; </span></a>/ ABOUT US
+            </div>
+          </div>
+        </div>                       
+        @endforeach       
+      </div>
+    </div>
+  </section>
 
  <!-- Start Company Journey -->
   <section>
@@ -46,7 +63,7 @@
       </div>
       <div class="cj-right" >
 
-              <div class="cs-height-70"></div>        
+        <div class="cs-height-70"></div>        
         <div class="cs-section-height"></div>
         <div class="cs-height-40"></div>
 

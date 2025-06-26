@@ -625,6 +625,28 @@ textarea {
     background: #ff2f2f;
 }
 
+/* carousel tambahan di about */
+#myCarousel {
+  margin-top: 80px; /* Sesuaikan dengan tinggi navbar */
+}
+#myCarousel {
+  z-index: -1;  /* Carousel memiliki z-index lebih rendah dari navbar */
+}
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Menempatkan caption tepat di tengah */
+  z-index: 10;  /* Memastikan caption berada di atas gambar */
+}
+
+@media (max-width: 768px) {
+  #myCarousel {
+      margin-top: 60px;  /* Lebih kecil di layar mobile */
+  }
+}
+
+
 /* START-MODAL OVERLAY: menutupi seluruh halaman */
 /* Modal menutupi seluruh layar */
 /* Modal menutupi seluruh layar */
