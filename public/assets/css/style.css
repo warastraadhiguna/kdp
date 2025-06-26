@@ -645,7 +645,26 @@ textarea {
       margin-top: 60px;  /* Lebih kecil di layar mobile */
   }
 }
+/* history perusahaan buatan sendiri */
+.swiper-slide-image img {
+  width: 100%;  /* Membuat gambar memenuhi lebar kolom */
+  height: auto; /* Menjaga proporsi gambar */
+  border-radius: 8px; /* Memberikan sudut melengkung pada gambar */
+}
 
+.swiper-slide-text {
+  padding-left: 20px;  /* Memberikan sedikit jarak antara teks dan gambar */
+}
+
+.swiper-slide-text h2 {
+  font-size: 1.8rem;  /* Mengatur ukuran font untuk tahun */
+  margin-bottom: 10px;
+}
+
+.swiper-slide-text p {
+  font-size: 1rem;  /* Ukuran font untuk teks */
+  line-height: 1.6;  /* Mengatur jarak antar baris untuk teks */
+}
 
 /* START-MODAL OVERLAY: menutupi seluruh halaman */
 /* Modal menutupi seluruh layar */
