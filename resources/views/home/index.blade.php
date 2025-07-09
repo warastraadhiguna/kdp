@@ -1,9 +1,6 @@
 
 @extends('layouts.index')
 @section('content')
-@if($company->modal_image && !(\Illuminate\Support\Facades\Request::is('*home*')))
-  @include('home.modal');    
-@endif
   @include('home.slider');    
 
   @include('home.vision-mission');    

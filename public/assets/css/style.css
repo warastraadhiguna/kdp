@@ -668,93 +668,75 @@ textarea {
 
 /* START-MODAL OVERLAY: menutupi seluruh halaman */
 /* Modal menutupi seluruh layar */
-/* Modal menutupi seluruh layar */
-.start-modal {
+.overlay-fullscreen {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;       /* lebar 100% viewport */
-  height: 100vh;      /* tinggi 100% viewport */
-  background: rgba(0, 0, 0, 0.9);  /* latar semi-transparan */
+  width: 100vw;
+  height: 100vh;
+  background-color: #000; /* Bisa pakai rgba(0,0,0,0.85) agar semi-transparan */
+  z-index: 9999;
   display: flex;
-  align-items: center;  /* Menjaga konten tetap di tengah secara vertikal */
-  justify-content: center; /* Menjaga konten tetap di tengah secara horizontal */
-  z-index: 9999;        /* Pastikan modal di atas semua elemen lain */
-}
-
-/* Kotak modal */
-.start-modal .modal-box {
-  position: relative;
-  background: transparent; /* Transparan, modal benar-benar hanya menampilkan gambar */
-  max-width: 100%; /* Max width 100% untuk mengikuti layar */
-  max-height: 100%; /* Max height 100% untuk mengikuti layar */
-  padding: 0;
-  overflow: hidden;
-}
-
-/* Tombol close */
-.start-modal .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 32px;
-  color: #fff;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  padding: 10px;
-  z-index: 10001;  /* Pastikan tombol close berada di atas konten */
-}
-
-/* Gambar modal untuk mengisi layar penuh */
-.modal-image-full {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Memastikan gambar menutupi seluruh layar */
-  object-position: center; /* Menjaga gambar tetap terpusat */
-  border-radius: 0;
-}
-
-/* Tombol Profile di Tengah */
-.profile-btn-container {
-  position: absolute;
-  top: 50%; /* Tengah vertikal */
-  left: 50%; /* Tengah horizontal */
-  transform: translate(-50%, -50%); /* Menjaga posisi tombol di tengah */
-  z-index: 10001; /* Pastikan tombol berada di atas konten */
-}
-
-.profile-btn {
-  background-color: #E32E16;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   color: white;
-  padding: 15px 30px;
-  border-radius: 10px;
   text-align: center;
-  font-size: 18px;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
 }
 
-.profile-btn:hover {
-  background-color: black;
+.overlay-fullscreen img {
+  max-width: 100%;
+  height: auto;
 }
 
+#enterSiteBtn {
+  font-size: 1.2rem;
+  padding: 12px 24px;
+}
+.overlay-fullscreen {
+  animation: zoomInBg 10s ease-out forwards;
+}
 
-/* Responsive */
-@media (max-width: 768px) {
-    .modal-content {
-        flex-direction: column;
-        text-align: center;
-    }
+@keyframes zoomInBg {
+  0% {
+    background-size: 100%;
+    filter: brightness(0.9);
+  }
+  100% {
+    background-size: 115%;
+    filter: brightness(1);
+  }
+}
 
-    .modal-left, .modal-right {
-        max-width: 100%;
-    }
+.fade-out {
+  animation: fadeOut 1s ease forwards;
+}
 
-    .modal-image {
-        max-width: 100%;
-    }
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0;
+    filter: blur(8px);
+    visibility: hidden;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px); /* efek naik sedikit */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ANGLING MODAL */

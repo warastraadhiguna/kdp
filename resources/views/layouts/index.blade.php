@@ -44,13 +44,40 @@
         </div>
       </div>
     </div>
-    <!-- End Preloader -->
+    <!-- End Preloader  { {  asset('storage/' . $company->modal_image) }} -->
 
-  @include('layouts.header');    
+    @if($company->modal_image && (\Illuminate\Support\Facades\Request::is('/')))
+      <div id="introOverlay"
+      class="overlay-fullscreen position-relative"
+      data-aos="zoom-in"
+      data-aos-duration="1200"
+      style="background-image: url('{{  asset('storage/' . $company->modal_image) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
-  @yield('content')
+      {{-- Tombol di 3/4 halaman --}}
+      <div class="text-center position-absolute w-100" style="top: 75%;">
 
-  @include('layouts.footer');    
+        <a href="#" id="enterSiteBtn" data-aos="fade-up" data-aos-delay="800"
+        class="cs-primary-btn secondary-btn cs-color-white themecolor-bg cs-height-70 cs-width-220 mx-auto">
+        <span>More about us</span>
+      </a>
+      </div> 
+      </div>
+
+      <div id="mainContent" style="display: none;">
+        @include('layouts.header')    
+        @yield('content')
+        @include('layouts.footer')  
+      </div>
+    @else
+      @include('layouts.header')    
+      @yield('content')
+      @include('layouts.footer')  
+    @endif
+
+
+
+
+
 
   <!-- Start Scrollup -->
   <span class="cs_scrollup">
@@ -88,8 +115,25 @@
   <script src="{{ asset('assets/js/plugins/aos.js')}}"></script>
   <script src="{{ asset('assets/js/main.js')}}"></script>
 
-<!-- Panggil manual -->
+  @if($company->modal_image && (\Illuminate\Support\Facades\Request::is('/')))
+<script>
+  const enterBtn = document.getElementById('enterSiteBtn');
+  const overlay = document.getElementById('introOverlay');
+  const mainContent = document.getElementById('mainContent');
 
+  enterBtn.addEventListener('click', function () {
+    // Fade out overlay
+    overlay.classList.add('fade-out');
+
+    // Setelah overlay menghilang, fade-in konten utama
+    overlay.addEventListener('animationend', function () {
+      overlay.style.display = 'none';
+      mainContent.style.display = 'block';
+      mainContent.classList.add('fade-in');
+    });
+  });
+</script>
+@endif
   <script>
   function swiperInit() {
     if ($(".hero-slider").length) {
