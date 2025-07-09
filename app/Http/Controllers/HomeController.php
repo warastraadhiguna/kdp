@@ -51,6 +51,7 @@ class HomeController extends Controller
         $about = About::where('slug', $slug)->where('index', ">", "0")->firstOrFail();
         $data = [
             "about" => $about ,
+            'aboutSliders' => AboutSlider::orderBy('index')->where('index', ">", 0)->get(),
         ];
 
         return view('about.detail', $data);

@@ -2,28 +2,24 @@
 @extends('layouts.index')
 @section('content')
  <!-- Start Common BreadCrumb -->
+
   <section>
-    <div class="cs-breadcrumb-wrap theme-dark" data-src="{{ asset('storage/' . $company->breadcrumb_image) }}">
-      <div class="container">
-        <div class="row cs_center">
-          <div class="cs-bread-page-title-area">
-            <div class="cs-page-title">
-              <h2 class="cs_white_color">Detail About</h2>
-            </div>
-            <div class="breadcrumb">
-              <ul>
-                <li>
-                  <a href="{{ url('/')}}" class="cs-text_b_line"><span>HOME</span></a>
-                </li>
-                <li>/</li>
-                <li>DETAIL ABOUT</li>
-              </ul>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        @foreach($aboutSliders as $key => $slider)
+        <div class="carousel-item {{ $key == 0? 'active' : '' }}">
+          <img src="{{ asset('storage/' . $slider->image) }}" class="d-block w-100" alt="Slide{{ $key }}">  
+          <div class="container">
+            <div class="carousel-caption text-center">
+              <h2 class="cs_white_color">About Us</h2>        
+              <a href="{{ url('/')}}" class="cs-text_b_line cs_white_color"><span>HOME &nbsp; </span></a>/ DETAIL ABOUT
             </div>
           </div>
-        </div>
+        </div>                       
+        @endforeach       
       </div>
     </div>
-  </section>
+  </section>  
   <!-- End Common BreadCrumb -->
 
     <!-- Start Post Section -->
