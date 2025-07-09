@@ -3947,6 +3947,18 @@ button i {
   font-size: 26px;
 }
 
+/* untuk tulisan slider awal Angling*/
+.hero-strong-title.no-split {
+  display: inline-block;
+  font-size: 48px !important;  
+  font-weight: 900 !important;  
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: 1.2 !important;  
+  text-transform: uppercase;
+  white-space: normal;
+  text-align: left;
+}
 /*--------------------------------------------------------------
   15. About Style
 ----------------------------------------------------------------*/
@@ -4028,6 +4040,7 @@ button i {
   -webkit-text-stroke-color: var(--themecolor);
   top: 0px;
 }
+ 
 
 @media screen and (min-width: 2000px) {
   .cs-cj-wrap .cj-right .cj-right-content {

@@ -15,7 +15,7 @@
                 <div class="slider-item-content">
                     <div class="cs-hero-title">
                       <div class="cs-hero-title-in cs-head">
-                        <h1><span class="hero-strong-title constr-splite">{{ $slider->title }}</span> 
+                        <h1><span class="hero-strong-title no-split">{{ $slider->title }}</span> 
                         {{-- <span class="cs-hero-title-normal hero-second-splite">{{ $company->name }}</span></h1> --}}
                       </div>
                     {{-- <div class="ae-title hero-backdrop-text constr-splite">
