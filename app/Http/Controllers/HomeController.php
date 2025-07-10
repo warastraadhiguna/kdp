@@ -130,7 +130,7 @@ class HomeController extends Controller
 
         $data = [
             'galleryCategory' => $galleryCategory,
-            'galleries' => Gallery::where("gallery_category_id", $galleryCategory->id)->orderBy('title')->get(),
+            'galleries' => Gallery::orderBy('index')->where("gallery_category_id", $galleryCategory->id)->where('index', ">", "0")->get(),
         ];
         return view('gallery.index', $data);
     }

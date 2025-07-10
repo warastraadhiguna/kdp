@@ -33,6 +33,7 @@ class GalleryResource extends Resource
                     ->searchable()
                     ->required(),
                 TextInput::make('title')->label('Judul')->required(),
+                TextInput::make('index')->label('Indeks (0 untuk tidak memunculkan)')->minValue(0)->required(),
                 FileUpload::make('image')
                     ->label('Gambar')
                     ->directory('images/gallery') // Direktori penyimpanan di `storage/app/public`
@@ -49,6 +50,7 @@ class GalleryResource extends Resource
             ->columns([
                 TextColumn::make('galleryCategory.title')->label('Kategori')->sortable(['gallery_categories.title']),
                 TextColumn::make('title')->label('Judul')->searchable(['title']),
+                TextColumn::make('index')->label('Indeks'),
                 ImageColumn::make('image')
                     ->label('Gambar')
                     ->size(50), // Ukuran gambar
