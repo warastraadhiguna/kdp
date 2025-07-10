@@ -139,10 +139,11 @@ class HomeController extends Controller
     public function project($slug)
     {
         $projectCategory = ProjectCategory::where('slug', $slug)->where('index', ">", "0")->firstOrFail();
+
         $data = [
             'projectCategory' => $projectCategory,
             'owners'  => Owner::orderBy('index')->get(),
-            'projects' => Project::with('owner')->where("project_category_id", $projectCategory->id)->orderBy('index')->where('index', ">", "0")->get(),
+            'projects' => Project::with('owner', 'orderedProjectDetails')->where("project_category_id", $projectCategory->id)->orderBy('index')->where('index', ">", "0")->get(),
         ];
 
         return view('project.index', $data);

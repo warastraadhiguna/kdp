@@ -30,12 +30,14 @@
                           <a href="#"><span>{{ $project->owner->name }}</span></a>
                       </div>
                       <a href="#" class="open-modal" 
-                          data-name="{{ $project->name }}"
-                          data-scope="{{ $project->scope }}"
-                          data-location="{{ $project->location }}"
-                          data-owner="{{ $project->owner->name }}"             
-                          data-schedule="{{ $project->schedule }}"
-                          data-image="{{ asset('storage/' . $project->image) }}">
+                            data-name="{{ $project->name }}"
+                            data-scope="{{ $project->scope }}"
+                            data-location="{{ $project->location }}"
+                            data-owner="{{ $project->owner? $project->owner->name : '' }}"                  
+                            data-schedule="{{ $project->schedule }}"
+                            {{-- data-image="{{ asset('storage/' . ($project->orderedProjectDetails->count() > 0? $project->orderedProjectDetails[0]->image : $project->image)) }}" --}}
+                            data-images = "{{ $project->orderedProjectDetails->pluck('image')->map(fn($img) => asset('storage/' . $img))->toJson() }}"
+                            >
                           <h5>{{ $project->name }}</h5>
                       </a>
 
@@ -44,8 +46,7 @@
                           data-scope="{{ $project->scope }}"
                           data-location="{{ $project->location }}"
                           data-owner="{{ $project->owner? $project->owner->name : '' }}"                  
-                          data-schedule="{{ $project->schedule }}"
-                          data-image="{{ asset('storage/' . $project->image) }}"  
+                          data-schedule="{{ $project->schedule }}" data-images = "{{ $project->orderedProjectDetails->pluck('image')->map(fn($img) => asset('storage/' . $img))->toJson() }}"
                           class="cs-text_b_line">
                           <span>{{ $project->location }}</span>
                           <i class="flaticon-right-arrow"></i>
@@ -84,7 +85,19 @@
             </table>
         </div>
         <div class="modal-right">
-            <img id="customModalImage" src="" class="modal-image">
+            <div id="carouselProjectImages" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id="carouselProjectImagesInner">
+                  <!-- Akan diisi via JS -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjectImages" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselProjectImages" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
         </div>
     </div>
     {{-- <button class="close-btn-modal">Close</button> --}}
@@ -94,30 +107,41 @@
 
 <script>
 document.querySelectorAll(".open-modal").forEach(el => {
-    el.addEventListener("click", function(event) {
+    el.addEventListener("click", function (event) {
         event.preventDefault();
 
-        // Ambil data dari atribut
+        // Ambil data
         let name = this.getAttribute("data-name");
         let scope = this.getAttribute("data-scope");
         let location = this.getAttribute("data-location");
-        let owner = this.getAttribute("data-owner");      
+        let owner = this.getAttribute("data-owner");
         let schedule = this.getAttribute("data-schedule");
-        let image = this.getAttribute("data-image");
+        let images = JSON.parse(this.getAttribute("data-images"));
 
-        // Masukkan data ke dalam modal
+        // Isi data text
         document.getElementById("customModalTitle").innerText = name;
         document.getElementById("customModalScope").innerText = scope;
         document.getElementById("customModalLocation").innerText = location;
         document.getElementById("customModalOwner").innerText = owner;
-   
         document.getElementById("customModalSchedule").innerText = schedule;
-        document.getElementById("customModalImage").src = image;
+
+        // Isi gambar carousel
+        const inner = document.getElementById("carouselProjectImagesInner");
+        inner.innerHTML = ''; // kosongkan
+
+        images.forEach((src, index) => {
+            const item = document.createElement("div");
+            item.classList.add("carousel-item");
+            if (index === 0) item.classList.add("active");
+            item.innerHTML = `<img src="${src}" class="d-block w-100 modal-image" alt="Slide ${index}">`;
+            inner.appendChild(item);
+        });
 
         // Tampilkan modal
         document.getElementById("customModal").style.display = "flex";
     });
 });
+
 
 // Tutup modal saat tombol close diklik
 document.querySelector(".close-btn").addEventListener("click", function() {
