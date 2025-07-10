@@ -23,7 +23,7 @@
   <!-- End Common BreadCrumb -->
 
     <!-- Start Post Section -->
-    <article class="blog-single">
+    {{-- <article class="blog-single">
       <div class="container">
         <div class="row">
           <div class="">
@@ -62,8 +62,23 @@
           </div>
         </div>
       </div>
-    </article>
+    </article> --}}
     <!-- Start Post Section -->
-  <div class="cs-section-height"></div>
+
+    <div class="cs-height-40"></div>
+    <div class="about-content mx-3">
+      <h4>
+          {{ $about->title }}
+      </h4>
+      <div class="cs-height-30"></div>         
+      <div class="cs-height-30"></div>
+       {!! $about->content !!}
+
+      <div class="cs-height-40"></div>
+
+    <div class="cs-container-border"></div>
+  </div>
+
+
   @include('layouts.tagline');      
 @endsection

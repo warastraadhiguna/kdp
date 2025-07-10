@@ -3959,6 +3959,12 @@ button i {
   white-space: normal;
   text-align: left;
 }
+/* ini untuk about angling */
+.about-content img {
+  display: block;
+  margin-inline: auto;
+  max-width: 100%;
+}
 /*--------------------------------------------------------------
   15. About Style
 ----------------------------------------------------------------*/
