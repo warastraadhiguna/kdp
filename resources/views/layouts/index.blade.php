@@ -415,7 +415,7 @@
 //project
 if ($(".service-slider-project").length) {
       var servicesslider = new Swiper(".service-slider-project", {
-        slidesPerView: 4,
+        slidesPerView: 5,
         spaceBetween: 30,
         pagination: {
           el: ".srv-swiper-pagination",
@@ -423,15 +423,15 @@ if ($(".service-slider-project").length) {
         },
         breakpoints: {
           1200: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 30,
           },
           992: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 20,
           },
           576: {
