@@ -47,33 +47,42 @@
     <!-- End Preloader  { {  asset('storage/' . $company->modal_image) }} -->
 
     @if($company->modal_image && (\Illuminate\Support\Facades\Request::is('/')))
-      <div id="introOverlay"
-      class="overlay-fullscreen position-relative"
-      data-aos="zoom-in"
-      data-aos-duration="1200"
-      style="background-image: url('{{  asset('storage/' . $company->modal_image) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div id="introOverlay"
+    class="overlay-fullscreen position-relative"
+    data-aos="zoom-in"
+    data-aos-duration="1200"
+    style="background-image: url('{{  asset('storage/' . $company->modal_image) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
-        {{-- Tombol di 3/4 halaman --}}
-        <div class="text-center position-absolute w-100" style="top: 50%;">
+      {{-- Tombol di 3/4 halaman --}}
+      <div class="text-center position-absolute w-100" style="top: 50%;">
 
-          <div class="mb-4" data-aos="fade-up" data-aos-delay="400">
-            <h1 class="text-white fw-bold" style="font-size: 48px; margin-bottom: 10px;">{{ $company->name }}</h1>
-            <p class="text-white" style="font-size: 20px;">{{ $company->tagline }}</p>
-          </div>
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="400">
+          <h1 class="text-white fw-bold" style="font-size: 48px; margin-bottom: 10px;">{{ $company->name }}</h1>
+          <p class="text-white" style="font-size: 20px;">{{ $company->tagline }}</p>
+        </div>
 
-          <a href="#" id="enterSiteBtn" data-aos="fade-up" data-aos-delay="800"
-          class="cs-primary-btn secondary-btn cs-color-white themecolor-bg cs-height-70 cs-width-220 mx-auto">
-          <span>More about us</span>
-        </a>
-        </div> 
+        <a href="#" id="enterSiteBtn" data-aos="fade-up" data-aos-delay="800"
+        class="cs-primary-btn secondary-btn cs-color-white themecolor-bg cs-height-70 cs-width-220 mx-auto">
+        <span>More about us</span>
+      </a>
+      </div> 
+    </div>
+
+      <div id="mainContent" style="display: none;">
+        @include('layouts.header')    
+        @yield('content')
+        @include('layouts.footer')  
       </div>
-    @endif
-
-    <div id="mainContent" style="display: {{$company->modal_image && (\Illuminate\Support\Facades\Request::is('/')) ? 'none' : 'block' }};">
+    @else
       @include('layouts.header')    
       @yield('content')
       @include('layouts.footer')  
-    </div>
+    @endif
+
+
+
+
+
 
   <!-- Start Scrollup -->
   <span class="cs_scrollup">
