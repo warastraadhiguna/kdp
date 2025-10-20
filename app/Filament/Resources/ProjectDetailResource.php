@@ -26,7 +26,7 @@ class ProjectDetailResource extends Resource
 {
     protected static ?string $model = ProjectDetail::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
 
     protected static ?string $navigationGroup = 'Pengaturan Project';
 

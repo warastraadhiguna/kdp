@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AboutHomeResource\Pages;
-use App\Models\Company; 
+use App\Models\Company;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,26 +15,26 @@ class AboutHomeResource extends Resource
 {
     protected static ?string $model = Company::class;
     protected static ?string $navigationGroup = 'Home';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('about_title1')->label('Judul 1'),       
-                TextInput::make('about_link1')->label('Link 1'),     
+                TextInput::make('about_title1')->label('Judul 1'),
+                TextInput::make('about_link1')->label('Link 1'),
 
-                TextInput::make('about_title2')->label('Judul 2'),                    
-                TextInput::make('about_link2')->label('Link 2'),     
+                TextInput::make('about_title2')->label('Judul 2'),
+                TextInput::make('about_link2')->label('Link 2'),
 
-                TextInput::make('about_title3')->label('Judul 3'),                   
-                TextInput::make('about_link3')->label('Link 3'),     
+                TextInput::make('about_title3')->label('Judul 3'),
+                TextInput::make('about_link3')->label('Link 3'),
 
-                TextInput::make('about_title4')->label('Judul 4'),                      
-                TextInput::make('about_link4')->label('Link 4'),   
-                
-                TextInput::make('about_title5')->label('Judul 5'),                      
-                TextInput::make('about_link5')->label('Link 5'),                  
+                TextInput::make('about_title4')->label('Judul 4'),
+                TextInput::make('about_link4')->label('Link 4'),
+
+                TextInput::make('about_title5')->label('Judul 5'),
+                TextInput::make('about_link5')->label('Link 5'),
             ]);
     }
 
@@ -90,11 +90,11 @@ class AboutHomeResource extends Resource
 
     public static function getModelLabel(): string
     {
-        return __('Home About');  
+        return __('Home About');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Data Home About');  
-    }        
+        return __('Data Home About');
+    }
 }

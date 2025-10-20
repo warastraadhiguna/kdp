@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CounterResource\Pages;
-use App\Filament\Resources\CounterResource\RelationManagers;
 use App\Models\Company;
-use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -13,15 +11,13 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class CounterResource extends Resource
 {
     protected static ?string $model = Company::class;
     protected static ?string $navigationGroup = 'Home';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calculator';
 
     public static function form(Form $form): Form
     {
@@ -39,7 +35,7 @@ class CounterResource extends Resource
                     TextInput::make('note_counter1')
                         ->label('Note 1')
                         ->required(),
-                ]),  
+                ]),
 
                 Section::make('Counter 2')
                 ->schema([
@@ -54,7 +50,7 @@ class CounterResource extends Resource
                         ->minValue(0)
                         ->required(),
                 ]),
-                
+
                 Section::make('Counter 3')
                 ->schema([
                     TextInput::make('title_counter3')
@@ -68,7 +64,7 @@ class CounterResource extends Resource
                         ->minValue(0)
                         ->required(),
                 ]),
-                     
+
                 Toggle::make('show_counter_info')
                 ->label('Tampilkan Informasi counter')
                 ->onColor('success')
@@ -131,11 +127,11 @@ class CounterResource extends Resource
 
     public static function getModelLabel(): string
     {
-        return __('Counter');  
+        return __('Counter');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Data Counter');  
-    }    
+        return __('Data Counter');
+    }
 }

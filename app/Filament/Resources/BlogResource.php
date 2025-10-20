@@ -27,7 +27,7 @@ class BlogResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
-    protected static ?string $navigationGroup = 'Pengaturan Web';
+    protected static ?string $navigationGroup = 'Pengaturan Berita';
 
     public static function form(Form $form): Form
     {

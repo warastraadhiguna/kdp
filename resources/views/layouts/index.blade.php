@@ -57,8 +57,8 @@
       <div class="text-center position-absolute w-100" style="top: 50%;">
 
         <div class="mb-4" data-aos="fade-up" data-aos-delay="400">
-          <h1 class="text-white fw-bold" style="font-size: 48px; margin-bottom: 10px;">{{ $company->name }}</h1>
-          <p class="text-white" style="font-size: 20px;">{{ $company->tagline }}</p>
+          <h1 class="text-white fw-bold" style="font-size: 48px; margin-bottom: 10px; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65), 0 0 12px rgba(0, 0, 0, 0.55);">{{ $company->name }}</h1>
+          <p class="text-white" style="font-size: 20px; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7), 0 0 8px rgba(0, 0, 0, 0.5);">{{ $company->tagline }}</p>
         </div>
 
         <a href="#" id="enterSiteBtn" data-aos="fade-up" data-aos-delay="800"

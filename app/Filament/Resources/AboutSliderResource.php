@@ -23,14 +23,14 @@ class AboutSliderResource extends Resource
 {
     protected static ?string $model = AboutSlider::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-arrow-right-circle';
     protected static ?string $navigationGroup = 'Pengaturan About';
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('title')->label('Judul')->required(),
-                TextInput::make('index')->label('Indeks')->minValue(0)->required(),          
+                TextInput::make('index')->label('Indeks')->minValue(0)->required(),
                 FileUpload::make('image')
                     ->label('Gambar (1920  x 465)')
                     // ->directory('images/sliders') // Direktori penyimpanan di `storage/app/public`
@@ -73,8 +73,8 @@ class AboutSliderResource extends Resource
                         } catch (\Exception $e) {
                             dd("Error memproses gambar: " . $e->getMessage());
                         }
-                    }),               
-                
+                    }),
+
             ]);
     }
 
@@ -87,7 +87,7 @@ class AboutSliderResource extends Resource
                 TextColumn::make('index')->label('Indeks'),
                 ImageColumn::make('image')
                     ->label('Gambar')
-                    ->size(50), // Ukuran gambar             
+                    ->size(50), // Ukuran gambar
             ])
             ->filters([
                 //
@@ -138,5 +138,5 @@ class AboutSliderResource extends Resource
     public static function canViewAny(): bool
     {
         return Auth::user()?->role  === 'admin'; // ✅ Hanya admin yang bisa melihat
-    }    
+    }
 }

@@ -8,17 +8,15 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use FilamentTiptapEditor\TiptapEditor;
-use Intervention\Image\ImageManager;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\RichEditor;
 use App\Filament\Resources\AboutResource\Pages;
 
 class AboutResource extends Resource
 {
     protected static ?string $model = About::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
 
     protected static ?string $navigationGroup = 'Pengaturan About';
     public static function form(Form $form): Form

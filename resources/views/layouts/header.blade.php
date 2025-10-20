@@ -49,7 +49,7 @@
               </li>       
 
               <li class="menu-item-has-children">
-                <a href="#" class="cs-text_b_line"><span>GALLERY</span></a>
+                <a href="#" class="cs-text_b_line"><span>MANPOWER & FACILITIES</span></a>
                 <ul>
                   @foreach($shownGalleryCategories as $shownGalleryCategory)
                     <li>

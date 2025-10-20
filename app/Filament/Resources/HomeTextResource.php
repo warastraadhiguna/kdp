@@ -3,23 +3,18 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\HomeTextResource\Pages;
-use App\Filament\Resources\HomeTextResource\RelationManagers;
 use App\Models\Company;
-use App\Models\HomeText;
-use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class HomeTextResource extends Resource
 {
     protected static ?string $model = Company::class;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static ?string $navigationGroup = 'Home';
     public static function form(Form $form): Form
     {
@@ -31,7 +26,7 @@ class HomeTextResource extends Resource
                 TextInput::make('client_text')->label('Client')->required(),
                 TextInput::make('project_text')->label('Project')->required(),
                 TextInput::make('news_text')->label('News')->required(),
-                TextInput::make('contact_us_text')->label('Contact Us')->required(),                                                                                                
+                TextInput::make('contact_us_text')->label('Contact Us')->required(),
             ]);
     }
 
@@ -87,11 +82,11 @@ class HomeTextResource extends Resource
 
     public static function getModelLabel(): string
     {
-        return __('Home Text');  
+        return __('Home Text');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Data Home Text');  
-    }        
+        return __('Data Home Text');
+    }
 }

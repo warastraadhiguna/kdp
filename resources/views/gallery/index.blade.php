@@ -10,7 +10,7 @@
         <div class="row cs_center">
           <div class="cs-bread-page-title-area">
             <div class="cs-page-title">
-              <h2 class="cs_white_color">Gallery</h2>
+              <h2 class="cs_white_color">Manpower & Facilities</h2>
             </div>
             <div class="breadcrumb">
               <ul>
@@ -18,7 +18,7 @@
                   <a href="{{ url('/')}}" class="cs-text_b_line"><span>HOME</span></a>
                 </li>
                 <li>/</li>
-                <li>GALLERY</li>
+                <li>MANPOWER & FACILITIES</li>
               </ul>
             </div>
           </div>

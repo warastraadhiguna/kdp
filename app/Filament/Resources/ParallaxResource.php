@@ -17,11 +17,12 @@ use Filament\Tables\Table;
 use Intervention\Image\Drivers\Gd\Encoders\JpegEncoder;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+
 class ParallaxResource extends Resource
 {
     protected static ?string $model = Company::class;
     protected static ?string $navigationGroup = 'Home';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-code-bracket-square';
 
     public static function form(Form $form): Form
     {
@@ -29,10 +30,10 @@ class ParallaxResource extends Resource
             ->schema([
                 TextInput::make('parallax_text1')
                 ->label('Teks 1')
-                ->required(), 
+                ->required(),
                 TextInput::make('parallax_text2')
                 ->label('Teks 2')
-                ->required(),                                  
+                ->required(),
 
                 FileUpload::make('parallax_image')
                 ->label('Parallax Image (1920x751)')
@@ -77,7 +78,7 @@ class ParallaxResource extends Resource
                 } catch (\Exception $e) {
                     dd("Error memproses gambar: " . $e->getMessage());
                 }
-            }),                    
+            }),
             Toggle::make('show_parallax_info')
             ->label('Tampilkan Informasi Parallax')
             ->onColor('success')
@@ -141,12 +142,12 @@ class ParallaxResource extends Resource
 
     public static function getModelLabel(): string
     {
-        return __('Parallax');  
+        return __('Parallax');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Data Parallax');  
+        return __('Data Parallax');
     }
 
 }

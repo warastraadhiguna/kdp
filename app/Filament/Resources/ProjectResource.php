@@ -33,7 +33,7 @@ class ProjectResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-           ->schema([
+            ->schema([
                 Select::make('project_category_id')
                     ->label('Category')
                     ->relationship('projectCategory', 'title')

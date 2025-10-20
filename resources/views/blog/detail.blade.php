@@ -3,12 +3,12 @@
 @section('content')
  <!-- Start Common BreadCrumb -->
   <section>
-    <div class="cs-breadcrumb-wrap theme-dark" data-src="{{ asset('storage/' . $company->breadcrumb_image) }}">
+    <div class="cs-breadcrumb-wrap theme-dark" data-src="{{ asset('storage/' . $company->blog_image) }}">
       <div class="container">
         <div class="row cs_center">
           <div class="cs-bread-page-title-area">
             <div class="cs-page-title">
-              <h2 class="cs_white_color">Detail Blog</h2>
+              <h2 class="cs_white_color">Detail News and Insight</h2>
             </div>
             <div class="breadcrumb">
               <ul>
@@ -16,7 +16,7 @@
                   <a href="{{ url('/')}}" class="cs-text_b_line"><span>HOME</span></a>
                 </li>
                 <li>/</li>
-                <li>DETAIL BLOG</li>
+                <li>DETAIL NEWS & INSIGHT</li>
               </ul>
             </div>
           </div>
